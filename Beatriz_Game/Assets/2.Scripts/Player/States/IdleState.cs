@@ -8,7 +8,10 @@ namespace Player
     public class IdleState : State
     {
         PlayerController entity;
-        public IdleState(PlayerController entity, StateMachine state) : base(entity, state){}
+        public IdleState(PlayerController entity, StateMachine state) : base( state)
+        {
+            this.entity = entity;
+        }
 
         public override void Enter()
         {

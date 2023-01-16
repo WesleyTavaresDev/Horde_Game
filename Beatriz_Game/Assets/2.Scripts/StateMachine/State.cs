@@ -4,12 +4,10 @@ using UnityEngine;
 
 public abstract class State : MonoBehaviour
 {
-    protected IDynamic entity;
     protected StateMachine state;
 
-    protected State(IDynamic entity, StateMachine state)
+    protected State(StateMachine state)
     {
-        this.entity = entity;
         this.state = state;
     }
 
