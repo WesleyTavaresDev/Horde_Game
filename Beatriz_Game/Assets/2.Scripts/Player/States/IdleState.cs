@@ -27,11 +27,9 @@ namespace Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-        }
 
-        public override void PhysicsUpdate()
-        {
-            base.PhysicsUpdate();
+            if(entity.move.ReadValue<float>() != 0)
+                state.ChangeState(entity.runState);
         }
 
         public override void Exit()
