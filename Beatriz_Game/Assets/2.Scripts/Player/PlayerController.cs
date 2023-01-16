@@ -13,6 +13,7 @@ namespace Player
 
         [HideInInspector] public PlayerInput input;
         [HideInInspector] public InputAction move;
+        [SerializeField] private Vector2 checkerRadius;
         [Header("Movement", order = 1)]
         public float horizontalInput;
         public float maxHorizontalSpeed;
@@ -21,10 +22,12 @@ namespace Player
 
         public Animator anim;
         public Rigidbody2D rb;
+        public BoxCollider2D coll;
 
         #region MonoBehaviour
         void Awake()
         {
+            coll = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
             input = GetComponent<PlayerInput>();
             rb = GetComponent<Rigidbody2D>();
@@ -51,6 +54,7 @@ namespace Player
         {
             playerSM.currentState.PhysicsUpdate();
         }
+
         #endregion
 
         #region Movement
@@ -59,8 +63,23 @@ namespace Player
         {
             rb.AddForce(force * Time.deltaTime, forceMode2D);
         }
-        
+
+        public InputAction GetJumpInput() => input.actions["Player"];        
         #endregion
         
+        #region checker
+
+        public bool IsGrounded()
+        {
+            return Physics2D.BoxCast(new Vector2(coll.bounds.center.x , transform.position.y), checkerRadius, 0, Vector2.zero);
+        }
+
+        #endregion
+        
+
+        void OnDrawGizmos()
+        {
+            Gizmos.DrawWireCube(new Vector2(coll.bounds.center.x , transform.position.y), checkerRadius);
+        }
     }
 }

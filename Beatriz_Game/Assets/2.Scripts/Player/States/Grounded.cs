@@ -12,10 +12,10 @@ namespace Player
             this.entity = entity;
         }
 
-
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            if(entity.GetJumpInput().ReadValue<bool>() && !entity.IsGrounded());
         }
     }
 }
