@@ -26,6 +26,7 @@ namespace Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            Flip();
             speed = Mathf.SmoothDamp(speed, entity.maxHorizontalSpeed, ref entity.currentRef, entity.smoothTime);
 
             if(movementInput == 0)
@@ -41,7 +42,20 @@ namespace Player
         public override void Exit()
         {
             base.Exit();
+            entity.rb.velocity -= new Vector2(Mathf.Lerp(entity.rb.velocity.x, 0, 0.1f), 0f);
             entity.anim.SetBool("Moving", false);
+        }
+
+        private void Flip()
+        {
+            Vector2 rotation = entity.gameObject.transform.eulerAngles;
+            
+            if(movementInput > 0 && rotation.y == 180)
+                rotation.y = 0;
+            else if(movementInput < 0 && rotation.y == 0)
+                rotation.y = 180;
+
+            entity.gameObject.transform.eulerAngles = rotation;
         }
     }
 }

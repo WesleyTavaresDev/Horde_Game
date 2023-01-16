@@ -207,7 +207,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -246,8 +246,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.038977206, y: 0.24835286}
-  m_Size: {x: 0.206743, y: 0.48185724}
+  m_Offset: {x: -0.074391514, y: 0.43584055}
+  m_Size: {x: 0.28590447, y: 0.8568326}
   m_Direction: 0
 --- !u!95 &45802367
 Animator:
@@ -294,8 +294,8 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   horizontalInput: 0
-  maxHorizontalSpeed: 650
-  smoothTime: 0.1
+  maxHorizontalSpeed: 600
+  smoothTime: 0.2
   currentRef: 0
   anim: {fileID: 0}
   rb: {fileID: 45802365}
