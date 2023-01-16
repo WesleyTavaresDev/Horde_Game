@@ -2,21 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace Player
-{
-    public class IdleState : State
+{   public class RunState : State
     {
         private PlayerController entity;
-        public IdleState(PlayerController entity, StateMachine state) : base( state)
-        {
-            this.entity = entity;
-        }
+
+        public RunState(PlayerController entity, StateMachine state) : base(state) => this.entity = entity;
 
         public override void Enter()
         {
             base.Enter();
-            entity.anim.SetBool("Idle", true);
         }
 
         public override void HandleInput()
@@ -37,7 +32,6 @@ namespace Player
         public override void Exit()
         {
             base.Exit();
-            entity.anim.SetBool("Idle", false);
         }
     }
 }
