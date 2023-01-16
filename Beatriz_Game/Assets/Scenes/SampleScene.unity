@@ -225,7 +225,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -285,7 +285,7 @@ MonoBehaviour:
   runState: {fileID: 0}
   input: {fileID: 0}
   move:
-    m_Name: 
+    m_Name: Move
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: cd21f00d-d99f-4b28-80d6-5fac8c1c4fec
@@ -294,7 +294,11 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   horizontalInput: 0
+  maxHorizontalSpeed: 650
+  smoothTime: 0.1
+  currentRef: 0
   anim: {fileID: 0}
+  rb: {fileID: 45802365}
 --- !u!114 &45802369
 MonoBehaviour:
   m_ObjectHideFlags: 0

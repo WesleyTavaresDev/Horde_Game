@@ -11,18 +11,24 @@ namespace Player
         [HideInInspector] public IdleState idleState;
         [HideInInspector] public RunState runState;
 
-        public PlayerInput input;
-        public InputAction move;
+        [HideInInspector] public PlayerInput input;
+        [HideInInspector] public InputAction move;
         [Header("Movement", order = 1)]
         public float horizontalInput;
+        public float maxHorizontalSpeed;
+        public float smoothTime;
+        [HideInInspector] public float currentRef;
 
         public Animator anim;
+        public Rigidbody2D rb;
 
         #region MonoBehaviour
         void Awake()
         {
             anim = GetComponent<Animator>();
             input = GetComponent<PlayerInput>();
+            rb = GetComponent<Rigidbody2D>();
+
             playerSM = new();
             idleState = new(this, playerSM);
             runState = new(this, playerSM);
@@ -47,5 +53,14 @@ namespace Player
         }
         #endregion
 
+        #region Movement
+        
+        public void Move(Vector2 force, ForceMode2D forceMode2D)
+        {
+            rb.AddForce(force * Time.deltaTime, forceMode2D);
+        }
+        
+        #endregion
+        
     }
 }
