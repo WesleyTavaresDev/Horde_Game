@@ -4,12 +4,20 @@ using UnityEngine;
 
 namespace Player 
 { 
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IDynamic
     {
         public StateMachine playerSM;
+        public IdleState idleState;
+
+        public Animator anim;
         void Awake()
         {
-    
+            anim = GetComponent<Animator>();
+
+            playerSM = new();
+            idleState = new(this, playerSM);
+
+            playerSM.Initialize(idleState);
         }
 
         void Update()
