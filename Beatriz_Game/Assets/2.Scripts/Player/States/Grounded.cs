@@ -15,7 +15,6 @@ namespace Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if(entity.GetJumpInput().ReadValue<bool>() && !entity.IsGrounded());
         }
     }
 }

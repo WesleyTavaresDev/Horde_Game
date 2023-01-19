@@ -267,6 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleState: {fileID: 0}
   runState: {fileID: 0}
+  jumpState: {fileID: 0}
   input: {fileID: 0}
   move:
     m_Name: Move
@@ -282,6 +283,7 @@ MonoBehaviour:
   maxHorizontalSpeed: 600
   smoothTime: 0.2
   currentRef: 0
+  jumpForce: 5000
   anim: {fileID: 0}
   rb: {fileID: 45802365}
   coll: {fileID: 45802370}
@@ -436,7 +438,7 @@ GameObject:
   - component: {fileID: 1108340166}
   - component: {fileID: 1108340165}
   - component: {fileID: 1108340167}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
