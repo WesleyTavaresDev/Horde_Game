@@ -19,8 +19,6 @@ namespace Player
         public float maxHorizontalSpeed;
         public float smoothTime;
         [HideInInspector] public float currentRef;
-        [Header("Jump", order = 2)]
-        public float jumpForce;
 
         public Animator anim;
         public Rigidbody2D rb;

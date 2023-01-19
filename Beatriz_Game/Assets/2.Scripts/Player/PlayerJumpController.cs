@@ -55,7 +55,7 @@ public class PlayerJumpController : MonoBehaviour
     {
         anim.SetBool("Jump", false);
         anim.SetBool("Fall", true);
-        rb.velocity += Vector2.down * fallForce * Time.deltaTime;     
+        rb.velocity += Vector2.down * fallForce * Time.fixedDeltaTime;     
     }
 
     private IEnumerator Land()
