@@ -7,12 +7,10 @@ namespace Player
 { 
     public class PlayerController : MonoBehaviour
     {
-        
+
         [HideInInspector] public StateMachine playerSM;
         [HideInInspector] public IdleState idleState;
-        [HideInInspector] public RunState runState;
-        [HideInInspector] public JumpState jumpState;
-
+        [HideInInspector] public RunState runState; 
         [HideInInspector] public PlayerInput input;
         [HideInInspector] public InputAction move;
         [SerializeField] private Vector2 checkerRadius;
@@ -39,7 +37,6 @@ namespace Player
             playerSM = new();
             idleState = new(this, playerSM);
             runState = new(this, playerSM);
-            jumpState = new(this, playerSM);
 
             playerSM.Initialize(idleState);
         }
@@ -69,22 +66,6 @@ namespace Player
             rb.AddForce(force * Time.deltaTime, forceMode2D);
         }
 
-        public InputAction GetJumpInput() => input.actions["Jump"];        
         #endregion
-        
-        #region checker
-
-        public bool IsGrounded()
-        {
-            return Physics2D.BoxCast(new Vector2(coll.bounds.center.x , transform.position.y), checkerRadius, 0, Vector2.zero, 0, 1 << 7);
-        }
-
-        #endregion
-        
-
-        void OnDrawGizmos()
-        {
-            Gizmos.DrawWireCube(new Vector2(coll.bounds.center.x , transform.position.y), checkerRadius);
-        }
     }
 }

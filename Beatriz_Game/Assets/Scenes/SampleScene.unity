@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 45802368}
   - component: {fileID: 45802369}
   - component: {fileID: 45802370}
+  - component: {fileID: 45802371}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -267,7 +268,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleState: {fileID: 0}
   runState: {fileID: 0}
-  jumpState: {fileID: 0}
   input: {fileID: 0}
   move:
     m_Name: Move
@@ -343,6 +343,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5746342, y: 1.16}
   m_EdgeRadius: 0.01
+--- !u!114 &45802371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45802362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6052c68745a9df91eaebc8fb0d473ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkerRadius: {x: 0.58, y: 0.03}
+  jumpForce: 250
+  fallForce: 1
+  fallingGravityScale: 0
+  rb: {fileID: 0}
+  coll: {fileID: 45802370}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
