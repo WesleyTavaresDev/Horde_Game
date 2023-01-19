@@ -280,8 +280,8 @@ MonoBehaviour:
     m_Flags: 0
   checkerRadius: {x: 0.57, y: 0.04}
   horizontalInput: 0
-  maxHorizontalSpeed: 600
-  smoothTime: 0.2
+  maxHorizontalSpeed: 750
+  smoothTime: 0.1
   currentRef: 0
   jumpForce: 5000
   anim: {fileID: 0}
@@ -356,10 +356,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkerRadius: {x: 0.58, y: 0.03}
-  jumpForce: 250
-  fallForce: 1
-  fallingGravityScale: 0
-  rb: {fileID: 0}
+  jumpForce: 650
+  fallForce: 15
+  landAnimation: {fileID: 7400000, guid: fa6a0586b8786e040a0a289ba864d036, type: 2}
   coll: {fileID: 45802370}
 --- !u!1 &519420028
 GameObject:
