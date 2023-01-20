@@ -8,22 +8,20 @@ public class PlayerJumpController : MonoBehaviour
     enum ANIMATION_JUMP_STATE{Inactive, Jumping, Falling, Landing};
     [SerializeField] private ANIMATION_JUMP_STATE animationJumpState;
 
-    [SerializeField] private float fallForce;
     [SerializeField] private AnimationClip landAnimation;
 
     private const float LAND_CHECKER_DISTANCE = -2f;
     private Rigidbody2D rb;
     private Animator anim;
-    private PlayerInput input;
     
     void Awake()
     {
-        input = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
 
     public void PlayJumpAnimation() => animationJumpState = ANIMATION_JUMP_STATE.Jumping; 
+    public void PlayFallAnimation() => animationJumpState = ANIMATION_JUMP_STATE.Falling;
 
     private void Update()
     {
@@ -32,12 +30,6 @@ public class PlayerJumpController : MonoBehaviour
 
     }
 
-
-    private void FixedUpdate()
-    {
-        if(rb.velocity.y < 0f)
-            Fall();
-    }
 
     private void LateUpdate()
     {
@@ -67,12 +59,6 @@ public class PlayerJumpController : MonoBehaviour
                 StartCoroutine(Land());
             break;
         }
-    }
-
-    private void Fall()
-    {
-        rb.velocity += Vector2.down * fallForce * Time.fixedDeltaTime;     
-        animationJumpState = ANIMATION_JUMP_STATE.Falling;
     }
 
     private IEnumerator Land()

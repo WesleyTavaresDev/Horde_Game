@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 45802370}
   - component: {fileID: 45802371}
   - component: {fileID: 45802372}
+  - component: {fileID: 45802373}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -356,11 +357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationJumpState: 0
-  checkerRadius: {x: 0.53, y: 0.03}
-  jumpForce: 750
   fallForce: 15
   landAnimation: {fileID: 7400000, guid: fa6a0586b8786e040a0a289ba864d036, type: 2}
-  coll: {fileID: 45802370}
 --- !u!114 &45802372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +374,19 @@ MonoBehaviour:
   jumpForce: 750
   checkerRadius: {x: 0.53, y: 0.03}
   coll: {fileID: 45802370}
+--- !u!114 &45802373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45802362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e0a7424422cab0b5f9510fb082ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallForce: 15
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

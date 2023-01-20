@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class FallState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float fallForce;
+
+    private Rigidbody2D rb;
+    private PlayerJumpController jumpController;
+    private void Start() 
     {
-        
+        jumpController = GetComponent<PlayerJumpController>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+         if(rb.velocity.y < 0f)
+            Fall();
     }
+    private void Fall()
+    {
+        rb.velocity += Vector2.down * fallForce * Time.fixedDeltaTime;     
+        jumpController.PlayFallAnimation();
+    }
+
 }
