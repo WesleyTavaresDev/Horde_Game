@@ -5,9 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerJumpController : MonoBehaviour
 {
+    enum ANIMATION_JUMP_STATE{Inactive, Jumping, Falling, Landing};
+    [SerializeField] private ANIMATION_JUMP_STATE animationJumpState;
+
     [SerializeField] private Vector2 checkerRadius;
     [SerializeField] private float jumpForce;
     [SerializeField] private float fallForce;
+    [SerializeField] private float landCheckerDistance;
     [SerializeField] private AnimationClip landAnimation;
 
     [SerializeField] private BoxCollider2D coll;
@@ -31,6 +35,14 @@ public class PlayerJumpController : MonoBehaviour
             Jump();
     }
 
+    private void Update()
+    {
+        if(rb.velocity.y >= -2f && animationJumpState == ANIMATION_JUMP_STATE.Falling)
+            animationJumpState = ANIMATION_JUMP_STATE.Landing;
+
+    }
+
+
     private void FixedUpdate()
     {
         if(rb.velocity.y < 0f)
@@ -39,23 +51,46 @@ public class PlayerJumpController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(IsGrounded())
-            anim.SetBool("Fall", false);
+        switch (animationJumpState)
+        {
+            case ANIMATION_JUMP_STATE.Inactive:
+                anim.SetBool("Jump", false);
+                anim.SetBool("Fall", false);
+                anim.SetBool("Land", false);
+            break;
+
+            case ANIMATION_JUMP_STATE.Jumping:
+                anim.SetBool("Idle", false);
+                anim.SetBool("Jump", true);
+                anim.SetBool("Fall", false);
+            break;
+
+            case ANIMATION_JUMP_STATE.Falling:
+            anim.SetBool("Idle", false);
+                anim.SetBool("Jump", false);
+                anim.SetBool("Fall", true);
+            break;
+
+            case ANIMATION_JUMP_STATE.Landing:
+            anim.SetBool("Idle", false);
+                anim.SetBool("Fall", false);
+                StartCoroutine(Land());
+            break;
+        }
     }
-
-
 
     private void Jump()
     {
         rb.AddForce(Vector2.up * jumpForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
-        anim.SetBool("Jump", true);
+        animationJumpState = ANIMATION_JUMP_STATE.Jumping;
     }
 
     private void Fall()
     {
-        anim.SetBool("Jump", false);
-        anim.SetBool("Fall", true);
         rb.velocity += Vector2.down * fallForce * Time.fixedDeltaTime;     
+        animationJumpState = ANIMATION_JUMP_STATE.Falling;
+
+
     }
 
     private IEnumerator Land()
@@ -63,6 +98,7 @@ public class PlayerJumpController : MonoBehaviour
         anim.SetBool("Land", true);
         yield return new WaitForSeconds(landAnimation.length);
         anim.SetBool("Land", false);
+        animationJumpState = ANIMATION_JUMP_STATE.Inactive;
     }
 
     public bool IsGrounded() => Physics2D.BoxCast(new Vector2(coll.bounds.center.x , transform.position.y), checkerRadius, 0, Vector2.zero, 0, 1 << 7);
