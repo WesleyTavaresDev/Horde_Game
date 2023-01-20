@@ -89,8 +89,6 @@ public class PlayerJumpController : MonoBehaviour
     {
         rb.velocity += Vector2.down * fallForce * Time.fixedDeltaTime;     
         animationJumpState = ANIMATION_JUMP_STATE.Falling;
-
-
     }
 
     private IEnumerator Land()
