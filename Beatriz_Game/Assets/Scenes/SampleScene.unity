@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationJumpState: 0
-  checkerRadius: {x: 0.58, y: 0.03}
+  checkerRadius: {x: 0.53, y: 0.03}
   jumpForce: 650
   fallForce: 15
   landCheckerDistance: 0

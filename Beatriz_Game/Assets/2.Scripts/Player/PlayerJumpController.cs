@@ -11,10 +11,10 @@ public class PlayerJumpController : MonoBehaviour
     [SerializeField] private Vector2 checkerRadius;
     [SerializeField] private float jumpForce;
     [SerializeField] private float fallForce;
-    [SerializeField] private float landCheckerDistance;
     [SerializeField] private AnimationClip landAnimation;
-
     [SerializeField] private BoxCollider2D coll;
+
+    private const float LAND_CHECKER_DISTANCE = -2f;
     private Rigidbody2D rb;
     private Animator anim;
     private PlayerInput input;
