@@ -280,7 +280,7 @@ MonoBehaviour:
     m_Flags: 0
   checkerRadius: {x: 0.57, y: 0.04}
   horizontalInput: 0
-  maxHorizontalSpeed: 750
+  maxHorizontalSpeed: 725
   smoothTime: 0.1
   currentRef: 0
   anim: {fileID: 0}
@@ -325,7 +325,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 45802362}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e5757f15ef4127d658b5d5d95f751bcc, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

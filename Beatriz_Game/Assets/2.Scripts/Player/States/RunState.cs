@@ -42,7 +42,7 @@ namespace Player
         public override void Exit()
         {
             base.Exit();
-            entity.rb.velocity -= new Vector2(Mathf.Lerp(entity.rb.velocity.x, 0, 0.1f), 0f);
+            entity.rb.velocity -= new Vector2(Mathf.Lerp(entity.rb.velocity.x, 0, 0f), 0f);
             entity.anim.SetBool("Moving", false);
         }
 
