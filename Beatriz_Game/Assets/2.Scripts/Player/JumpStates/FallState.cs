@@ -8,6 +8,7 @@ public class FallState : MonoBehaviour
 
     private Rigidbody2D rb;
     private PlayerJumpController jumpController;
+    
     private void Start() 
     {
         jumpController = GetComponent<PlayerJumpController>();

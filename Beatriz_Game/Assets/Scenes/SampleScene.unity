@@ -359,6 +359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationJumpState: 0
   landAnimation: {fileID: 7400000, guid: fa6a0586b8786e040a0a289ba864d036, type: 2}
+  coll: {fileID: 45802370}
+  checkerSize: {x: 0.53, y: 0.03}
 --- !u!114 &45802372
 MonoBehaviour:
   m_ObjectHideFlags: 0
