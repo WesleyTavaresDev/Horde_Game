@@ -40,8 +40,8 @@ public class PlayerJumpController : MonoBehaviour
             break;
 
             case ANIMATION_JUMP_STATE.Jumping:
-                anim.SetBool("Idle", false);
                 anim.SetBool("Jump", true);
+                anim.SetBool("Idle", false);
                 anim.SetBool("Fall", false);
             break;
 
