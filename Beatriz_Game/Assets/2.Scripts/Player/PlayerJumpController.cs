@@ -22,6 +22,9 @@ public class PlayerJumpController : MonoBehaviour
 
     public void PlayJumpAnimation() => animationJumpState = ANIMATION_JUMP_STATE.Jumping; 
     public void PlayFallAnimation() => animationJumpState = ANIMATION_JUMP_STATE.Falling;
+    public void PlayLandAnimation() => animationJumpState = ANIMATION_JUMP_STATE.Landing;
+    public void PlayInactive() => animationJumpState = ANIMATION_JUMP_STATE.Inactive;
+    public bool IsPlayingFallingAnimation() => animationJumpState == ANIMATION_JUMP_STATE.Falling;
 
     private void Update()
     {
@@ -55,18 +58,10 @@ public class PlayerJumpController : MonoBehaviour
 
             case ANIMATION_JUMP_STATE.Landing:
             anim.SetBool("Idle", false);
-                anim.SetBool("Fall", false);
-                StartCoroutine(Land());
+            anim.SetBool("Fall", false);
             break;
         }
     }
 
-    private IEnumerator Land()
-    {
-        anim.SetBool("Land", true);
-        yield return new WaitForSeconds(landAnimation.length);
-        anim.SetBool("Land", false);
-        animationJumpState = ANIMATION_JUMP_STATE.Inactive;
-    }      
-    
+ 
 }
