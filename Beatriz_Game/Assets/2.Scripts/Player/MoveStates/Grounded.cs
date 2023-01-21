@@ -16,5 +16,11 @@ namespace Player
         {
             base.LogicUpdate();
         }
+        
+        public void Move(Vector2 force, ForceMode2D forceMode2D)
+        {
+            entity.rb.AddForce(force * Time.deltaTime, forceMode2D);
+        }
+
     }
 }

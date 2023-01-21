@@ -59,14 +59,5 @@ namespace Player
         }
 
         #endregion
-
-        #region Movement
-        
-        public void Move(Vector2 force, ForceMode2D forceMode2D)
-        {
-            rb.AddForce(force * Time.deltaTime, forceMode2D);
-        }
-
-        #endregion
     }
 }

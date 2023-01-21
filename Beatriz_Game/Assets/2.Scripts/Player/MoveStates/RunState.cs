@@ -35,7 +35,7 @@ namespace Player
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            entity.Move(Vector2.right * speed * movementInput, ForceMode2D.Force);
+            Move(Vector2.right * speed * movementInput, ForceMode2D.Force);
         }
 
         public override void Exit()
