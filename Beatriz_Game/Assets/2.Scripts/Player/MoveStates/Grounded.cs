@@ -6,7 +6,7 @@ namespace Player
 {
     public class Grounded : State
     {
-        PlayerController entity;
+        protected PlayerController entity;
         public Grounded(PlayerController entity, StateMachine state) : base(state)
         {
             this.entity = entity;
