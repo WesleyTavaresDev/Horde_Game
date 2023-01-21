@@ -5,6 +5,7 @@ using Player;
 
 public class Attack : State
 {
+    private float attackTime;
     PlayerController entity;
     
     public Attack(PlayerController entity, StateMachine state) : base(state)
@@ -15,7 +16,8 @@ public class Attack : State
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Attacking");
+        entity.anim.SetTrigger("Attack");
+        attackTime = entity.anim.GetCurrentAnimatorClipInfo(0).Length;
     }
 
     public override void HandleInput()
@@ -26,15 +28,16 @@ public class Attack : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-    }
+        attackTime -= Time.deltaTime;
 
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
+        if(attackTime <= 0f)
+            state.ChangeState(entity.idleState);
+
     }
 
     public override void Exit()
     {
         base.Exit();
+        entity.anim.ResetTrigger("Attack");
     }
 }
