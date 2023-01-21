@@ -27,7 +27,7 @@ namespace Player
         {
             base.LogicUpdate();
 
-            if(entity.move.ReadValue<float>() != 0)
+            if(entity.move.WasPerformedThisFrame())
                 state.ChangeState(entity.runState);
         }
 

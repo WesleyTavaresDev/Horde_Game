@@ -272,6 +272,7 @@ MonoBehaviour:
   idleState: {fileID: 0}
   runState: {fileID: 0}
   attackState: {fileID: 0}
+  comboState: {fileID: 0}
   input: {fileID: 0}
   move:
     m_Name: Move
@@ -282,7 +283,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  attack:
+  attackInput:
     m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
@@ -291,10 +292,12 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  attacking: 0
   maxHorizontalSpeed: 725
   smoothTime: 0.05
   currentRef: 0
   attackClip: {fileID: 7400000, guid: 976fec67b7ae98d04988be6bb4f1233f, type: 2}
+  comboAttackClip: {fileID: 7400000, guid: 173fe0e9c6d3347e1aed33c5a7f69c5e, type: 2}
   anim: {fileID: 45802367}
   rb: {fileID: 45802365}
   coll: {fileID: 45802370}
@@ -382,7 +385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 750
-  checkerRadius: {x: 0.53, y: 0.03}
   coll: {fileID: 45802370}
 --- !u!114 &45802373
 MonoBehaviour:

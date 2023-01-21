@@ -25,6 +25,7 @@ namespace Player
 
         [Header("Attack", order = 2)]
         public AnimationClip attackClip;
+        public AnimationClip comboAttackClip;
 
         public Animator anim;
         public Rigidbody2D rb;

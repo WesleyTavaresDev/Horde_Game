@@ -19,13 +19,14 @@ public class Attack : State
         base.Enter();
         entity.anim.SetBool("Attack", true);
         attackTime = entity.attackClip.length;
+        combo = false;
         entity.attacking = true;
     }
 
     public override void HandleInput()
     {
         base.HandleInput();
-        if(entity.attackInput.WasPerformedThisFrame())
+        if(entity.attackInput.WasPressedThisFrame())
             combo = true;
     }
 
