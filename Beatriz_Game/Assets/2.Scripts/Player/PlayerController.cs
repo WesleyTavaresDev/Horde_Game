@@ -7,7 +7,7 @@ namespace Player
 { 
     public class PlayerController : MonoBehaviour
     {
-
+    #region States and Components
         [HideInInspector] public StateMachine playerSM;
         [HideInInspector] public IdleState idleState;
         [HideInInspector] public RunState runState; 
@@ -17,6 +17,9 @@ namespace Player
         [HideInInspector] public InputAction move;
         [HideInInspector] public InputAction attackInput;
         [HideInInspector] public bool attacking;
+        [HideInInspector] public Animator anim;
+        [HideInInspector] public Rigidbody2D rb;
+    #endregion
 
         [Header("Movement", order = 1)]
         public float maxHorizontalSpeed;
@@ -27,14 +30,10 @@ namespace Player
         public AnimationClip attackClip;
         public AnimationClip comboAttackClip;
 
-        public Animator anim;
-        public Rigidbody2D rb;
-        public BoxCollider2D coll;
-
+     
         #region MonoBehaviour
         void Awake()
         {
-            coll = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
             input = GetComponent<PlayerInput>();
             rb = GetComponent<Rigidbody2D>();
