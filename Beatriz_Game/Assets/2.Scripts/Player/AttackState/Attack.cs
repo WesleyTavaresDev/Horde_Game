@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Player;
 
-public class Attack : MonoBehaviour
+public class Attack : State
 {
-    // Start is called before the first frame update
-    void Start()
+    PlayerController entity;
+    
+    public Attack(PlayerController entity, StateMachine state) : base(state)
     {
-        
+        this.entity = entity; 
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
-        
+        base.Enter();
+    }
+
+    public override void HandleInput()
+    {
+        base.HandleInput();
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
     }
 }
