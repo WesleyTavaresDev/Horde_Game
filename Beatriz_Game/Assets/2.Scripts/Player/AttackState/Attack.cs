@@ -16,8 +16,8 @@ public class Attack : State
     public override void Enter()
     {
         base.Enter();
-        entity.anim.SetTrigger("Attack");
-        attackTime = entity.anim.GetCurrentAnimatorClipInfo(0).Length;
+        entity.anim.SetBool("Attack", true);
+        attackTime = entity.attackClip.length;
     }
 
     public override void HandleInput()
@@ -38,6 +38,6 @@ public class Attack : State
     public override void Exit()
     {
         base.Exit();
-        entity.anim.ResetTrigger("Attack");
+        entity.anim.SetBool("Attack", false);
     }
 }

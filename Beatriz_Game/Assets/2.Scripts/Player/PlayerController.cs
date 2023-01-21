@@ -16,12 +16,13 @@ namespace Player
         [HideInInspector] public InputAction move;
         [HideInInspector] public InputAction attack;
 
-        [SerializeField] private Vector2 checkerRadius;
         [Header("Movement", order = 1)]
-        public float horizontalInput;
         public float maxHorizontalSpeed;
         public float smoothTime;
         [HideInInspector] public float currentRef;
+
+        [Header("Attack", order = 2)]
+        public AnimationClip attackClip;
 
         public Animator anim;
         public Rigidbody2D rb;
