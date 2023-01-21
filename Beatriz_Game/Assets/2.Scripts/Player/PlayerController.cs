@@ -11,8 +11,10 @@ namespace Player
         [HideInInspector] public StateMachine playerSM;
         [HideInInspector] public IdleState idleState;
         [HideInInspector] public RunState runState; 
+        [HideInInspector] public Attack attackState;
         [HideInInspector] public PlayerInput input;
         [HideInInspector] public InputAction move;
+
         [SerializeField] private Vector2 checkerRadius;
         [Header("Movement", order = 1)]
         public float horizontalInput;
@@ -35,7 +37,8 @@ namespace Player
             playerSM = new();
             idleState = new(this, playerSM);
             runState = new(this, playerSM);
-
+            attackState = new(this, playerSM);
+            
             playerSM.Initialize(idleState);
         }
 
