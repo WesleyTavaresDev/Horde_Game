@@ -14,6 +14,7 @@ namespace Player
         [HideInInspector] public Attack attackState;
         [HideInInspector] public PlayerInput input;
         [HideInInspector] public InputAction move;
+        [HideInInspector] public InputAction attack;
 
         [SerializeField] private Vector2 checkerRadius;
         [Header("Movement", order = 1)]
@@ -45,7 +46,8 @@ namespace Player
         void Start()
         {
             move = input.actions["Move"];
-	}
+            attack = input.actions["AttackMeele"];
+	    }
 
         void Update()
         {
