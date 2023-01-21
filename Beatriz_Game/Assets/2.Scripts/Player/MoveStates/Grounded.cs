@@ -6,7 +6,7 @@ namespace Player
 {
     public class Grounded : State
     {
-        PlayerController entity;
+        protected PlayerController entity;
         public Grounded(PlayerController entity, StateMachine state) : base(state)
         {
             this.entity = entity;
@@ -15,6 +15,15 @@ namespace Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            
+            if(entity.attackInput.WasPerformedThisFrame())
+                state.ChangeState(entity.attackState);
         }
+        
+        public void Move(Vector2 force, ForceMode2D forceMode2D)
+        {
+            entity.rb.AddForce(force * Time.deltaTime, forceMode2D);
+        }
+
     }
 }

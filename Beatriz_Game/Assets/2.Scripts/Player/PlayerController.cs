@@ -7,27 +7,33 @@ namespace Player
 { 
     public class PlayerController : MonoBehaviour
     {
-
+    #region States and Components
         [HideInInspector] public StateMachine playerSM;
         [HideInInspector] public IdleState idleState;
         [HideInInspector] public RunState runState; 
+        [HideInInspector] public Attack attackState;
+        [HideInInspector] public ComboAttack comboState;
         [HideInInspector] public PlayerInput input;
         [HideInInspector] public InputAction move;
-        [SerializeField] private Vector2 checkerRadius;
+        [HideInInspector] public InputAction attackInput;
+        [HideInInspector] public bool attacking;
+        [HideInInspector] public Animator anim;
+        [HideInInspector] public Rigidbody2D rb;
+    #endregion
+
         [Header("Movement", order = 1)]
-        public float horizontalInput;
         public float maxHorizontalSpeed;
         public float smoothTime;
         [HideInInspector] public float currentRef;
 
-        public Animator anim;
-        public Rigidbody2D rb;
-        public BoxCollider2D coll;
+        [Header("Attack", order = 2)]
+        public AnimationClip attackClip;
+        public AnimationClip comboAttackClip;
 
+     
         #region MonoBehaviour
         void Awake()
         {
-            coll = GetComponent<BoxCollider2D>();
             anim = GetComponent<Animator>();
             input = GetComponent<PlayerInput>();
             rb = GetComponent<Rigidbody2D>();
@@ -35,14 +41,17 @@ namespace Player
             playerSM = new();
             idleState = new(this, playerSM);
             runState = new(this, playerSM);
-
+            attackState = new(this, playerSM);
+            comboState = new(this, playerSM);
+            
             playerSM.Initialize(idleState);
         }
 
         void Start()
         {
             move = input.actions["Move"];
-	}
+            attackInput = input.actions["AttackMeele"];
+	    }
 
         void Update()
         {
@@ -54,16 +63,8 @@ namespace Player
         {
             playerSM.currentState.PhysicsUpdate();
         }
-
         #endregion
 
-        #region Movement
-        
-        public void Move(Vector2 force, ForceMode2D forceMode2D)
-        {
-            rb.AddForce(force * Time.deltaTime, forceMode2D);
-        }
-
-        #endregion
+        public bool IsAttacking() => attacking;
     }
 }

@@ -5,10 +5,9 @@ using UnityEngine;
 
 namespace Player
 {
-    public class IdleState : State
+    public class IdleState : Grounded
     {
-        private PlayerController entity;
-        public IdleState(PlayerController entity, StateMachine state) : base(state)
+        public IdleState(PlayerController entity, StateMachine state) : base(entity,state)
         {
             this.entity = entity;
         }
@@ -28,7 +27,7 @@ namespace Player
         {
             base.LogicUpdate();
 
-            if(entity.move.ReadValue<float>() != 0)
+            if(entity.move.WasPerformedThisFrame())
                 state.ChangeState(entity.runState);
         }
 

@@ -2,28 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FallState : MonoBehaviour
-{
-    [SerializeField] private float fallForce;
-
-    private Rigidbody2D rb;
-    private PlayerJumpController jumpController;
-    
-    private void Start() 
+namespace Player
+{   
+    public class FallState : MonoBehaviour
     {
-        jumpController = GetComponent<PlayerJumpController>();
-        rb = GetComponent<Rigidbody2D>();
-    }
+        [SerializeField] private float fallForce;
 
-    private void Update()
-    {
-         if(rb.velocity.y < 0f)
-            Fall();
-    }
-    private void Fall()
-    {
-        rb.velocity += Vector2.down * fallForce * Time.fixedDeltaTime;     
-        jumpController.PlayFallAnimation();
-    }
+        private Rigidbody2D rb;
+        private PlayerJumpController jumpController;
 
+        private void Start() 
+        {
+            jumpController = GetComponent<PlayerJumpController>();
+            rb = GetComponent<Rigidbody2D>();
+        }
+
+        private void Update()
+        {
+             if(rb.velocity.y < 0f)
+                Fall();
+        }
+        private void Fall()
+        {
+            rb.velocity += Vector2.down * fallForce * Time.fixedDeltaTime;     
+            jumpController.PlayFallAnimation();
+        }
+
+    }
 }
