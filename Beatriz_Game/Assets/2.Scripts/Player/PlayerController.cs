@@ -60,7 +60,8 @@ namespace Player
         {
             playerSM.currentState.PhysicsUpdate();
         }
-
         #endregion
+
+        public bool IsAttacking() => anim.GetBool("Attack");
     }
 }
