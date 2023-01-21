@@ -12,9 +12,11 @@ namespace Player
         [HideInInspector] public IdleState idleState;
         [HideInInspector] public RunState runState; 
         [HideInInspector] public Attack attackState;
+        [HideInInspector] public ComboAttack comboState;
         [HideInInspector] public PlayerInput input;
         [HideInInspector] public InputAction move;
-        [HideInInspector] public InputAction attack;
+        [HideInInspector] public InputAction attackInput;
+        [HideInInspector] public bool attacking;
 
         [Header("Movement", order = 1)]
         public float maxHorizontalSpeed;
@@ -40,6 +42,7 @@ namespace Player
             idleState = new(this, playerSM);
             runState = new(this, playerSM);
             attackState = new(this, playerSM);
+            comboState = new(this, playerSM);
             
             playerSM.Initialize(idleState);
         }
@@ -47,7 +50,7 @@ namespace Player
         void Start()
         {
             move = input.actions["Move"];
-            attack = input.actions["AttackMeele"];
+            attackInput = input.actions["AttackMeele"];
 	    }
 
         void Update()
@@ -62,6 +65,6 @@ namespace Player
         }
         #endregion
 
-        public bool IsAttacking() => anim.GetBool("Attack");
+        public bool IsAttacking() => attacking;
     }
 }

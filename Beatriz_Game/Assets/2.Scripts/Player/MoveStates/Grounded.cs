@@ -16,7 +16,7 @@ namespace Player
         {
             base.LogicUpdate();
             
-            if(entity.attack.WasPerformedThisFrame())
+            if(entity.attackInput.WasPerformedThisFrame())
                 state.ChangeState(entity.attackState);
         }
         

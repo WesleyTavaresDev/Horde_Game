@@ -6,6 +6,7 @@ using Player;
 public class Attack : State
 {
     private float attackTime;
+    private bool combo;
     PlayerController entity;
     
     public Attack(PlayerController entity, StateMachine state) : base(state)
@@ -18,11 +19,14 @@ public class Attack : State
         base.Enter();
         entity.anim.SetBool("Attack", true);
         attackTime = entity.attackClip.length;
+        entity.attacking = true;
     }
 
     public override void HandleInput()
     {
         base.HandleInput();
+        if(entity.attackInput.WasPerformedThisFrame())
+            combo = true;
     }
 
     public override void LogicUpdate()
@@ -31,7 +35,10 @@ public class Attack : State
         attackTime -= Time.deltaTime;
 
         if(attackTime <= 0f)
-            state.ChangeState(entity.idleState);
+        {   
+            state.ChangeState(combo ? entity.comboState : entity.idleState);
+        }   
+            
 
     }
 
@@ -39,5 +46,6 @@ public class Attack : State
     {
         base.Exit();
         entity.anim.SetBool("Attack", false);
+        entity.attacking = false;
     }
 }
