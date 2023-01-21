@@ -15,6 +15,7 @@ public class Attack : State
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("Attacking");
     }
 
     public override void HandleInput()

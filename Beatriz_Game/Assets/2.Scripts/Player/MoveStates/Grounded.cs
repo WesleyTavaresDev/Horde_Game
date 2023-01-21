@@ -12,14 +12,12 @@ namespace Player
             this.entity = entity;
         }
 
-        public override void HandleInput()
-        {
-            base.HandleInput();
-        }
-
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            
+            if(entity.attack.WasPerformedThisFrame())
+                state.ChangeState(entity.attackState);
         }
         
         public void Move(Vector2 force, ForceMode2D forceMode2D)
