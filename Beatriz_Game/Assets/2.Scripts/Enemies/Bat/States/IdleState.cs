@@ -17,6 +17,11 @@ namespace Enemy.Bat
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+
+            if(bat.IsPlayerClose())
+            {
+                Debug.Log("Player is close");
+            }
         }
 
         public override void PhysicsUpdate()

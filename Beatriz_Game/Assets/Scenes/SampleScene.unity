@@ -297,7 +297,7 @@ MonoBehaviour:
   attacking: 0
   anim: {fileID: 45802367}
   rb: {fileID: 45802365}
-  maxHorizontalSpeed: 725
+  maxHorizontalSpeed: 700
   smoothTime: 0.05
   currentRef: 0
   attackClip: {fileID: 7400000, guid: 976fec67b7ae98d04988be6bb4f1233f, type: 2}
@@ -532,6 +532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleState: {fileID: 0}
+  overlapRadius: 4
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,7 +629,7 @@ GameObject:
   - component: {fileID: 1017361482}
   - component: {fileID: 1017361483}
   - component: {fileID: 1017361484}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AttackHitbox
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
@@ -823,7 +824,7 @@ GameObject:
   - component: {fileID: 1676219940}
   - component: {fileID: 1676219939}
   - component: {fileID: 1676219941}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: 'ComboAttackHitbox '
   m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
