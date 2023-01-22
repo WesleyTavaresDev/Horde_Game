@@ -4,18 +4,25 @@ using UnityEngine;
 
 namespace Enemy.Bat
 {
-    public class IdleState : MonoBehaviour
+    public class IdleState : State
     {
-        // Start is called before the first frame update
-        void Start()
+        BatController bat;
+        public IdleState(BatController bat, StateMachine state) : base(state) => this.bat = bat;
+
+        public override void Enter()
         {
-        
+            base.Enter();
         }
 
-        // Update is called once per frame
-        void Update()
+        public override void LogicUpdate()
         {
-        
+            base.LogicUpdate();
         }
+
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+        }
+
     }
 }
