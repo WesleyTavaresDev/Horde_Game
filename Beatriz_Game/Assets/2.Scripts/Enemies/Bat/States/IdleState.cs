@@ -4,17 +4,18 @@ using UnityEngine;
 
 namespace Enemy.Bat
 {
-    public class BatController : MonoBehaviour
+    public class IdleState : MonoBehaviour
     {
-        public StateMachine batSM;
+        // Start is called before the first frame update
         void Start()
         {
-            
+        
         }
 
+        // Update is called once per frame
         void Update()
         {
-            
+        
         }
     }
 }
