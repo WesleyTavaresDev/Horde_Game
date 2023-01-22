@@ -20,7 +20,7 @@ namespace Enemy.Bat
 
             if(bat.IsPlayerClose())
             {
-                Debug.Log("Player is close");
+                state.ChangeState(bat.moveState);
             }
         }
 
@@ -29,5 +29,9 @@ namespace Enemy.Bat
             base.PhysicsUpdate();
         }
 
+        public override void Exit()
+        {
+            base.Exit();
+        }
     }
 }

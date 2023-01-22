@@ -8,14 +8,17 @@ namespace Enemy.Bat
     {
         [HideInInspector] public StateMachine batSM;
         [HideInInspector] public IdleState idleState;
-        
+        [HideInInspector] public MoveState moveState;
         [SerializeField] private float overlapRadius;
         void Start()
         {
             batSM = new();
 
             idleState = new(this, batSM);
+            moveState = new(this, batSM);
+            
             batSM.Initialize(idleState);
+
         }
 
         void Update()
