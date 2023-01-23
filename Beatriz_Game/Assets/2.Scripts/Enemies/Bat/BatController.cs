@@ -10,6 +10,7 @@ namespace Enemy.Bat
         [HideInInspector] public IdleState idleState;
         [HideInInspector] public MoveState moveState;
         [HideInInspector] public AttackState attackState;
+        [HideInInspector] public DeadState deadState;
 
         [Header("Movement", order =1)]
         public GameObject player;
@@ -32,6 +33,7 @@ namespace Enemy.Bat
             idleState = new(this, batSM);
             moveState = new(this, batSM);
             attackState = new(this, batSM);
+            deadState = new(this, batSM);
 
             batSM.Initialize(idleState);
 
@@ -51,7 +53,7 @@ namespace Enemy.Bat
         private void OnTriggerEnter2D(Collider2D other) 
         {
             if(other.CompareTag("PlayerAttack"))
-                Destroy(this.gameObject);    
+                batSM.ChangeState(deadState);   
         }
 
         public bool IsPlayerClose()
