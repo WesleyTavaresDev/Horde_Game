@@ -12,6 +12,7 @@ namespace Enemy.Bat
         public override void Enter()
         {
             base.Enter();
+            bat.anim.SetBool("BatIdle", true);
         }
 
         public override void HandleInput()
@@ -37,6 +38,8 @@ namespace Enemy.Bat
         public override void Exit()
         {
             base.Exit();
+            bat.anim.SetBool("BatIdle", false);
         }
+
     }
 }

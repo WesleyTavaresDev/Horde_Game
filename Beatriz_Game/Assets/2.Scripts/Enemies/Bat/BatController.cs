@@ -21,10 +21,12 @@ namespace Enemy.Bat
         [SerializeField] private float overlapRadius;
         public float speed;
         public Rigidbody2D rb;
+        public Animator anim;
         public Collider2D coll;
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            anim = GetComponent<Animator>();
             coll = GetComponent<Collider2D>();
             coll.enabled = false;
 
@@ -59,6 +61,11 @@ namespace Enemy.Bat
         public bool IsPlayerClose()
         {
             return Physics2D.OverlapCircle(transform.position, overlapRadius, 1 << 6);
+        }
+
+        private void Dead()
+        {
+            Destroy(this.gameObject);
         }
         
         private void OnDrawGizmos() 

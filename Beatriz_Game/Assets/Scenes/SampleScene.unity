@@ -536,12 +536,14 @@ MonoBehaviour:
   idleState: {fileID: 0}
   moveState: {fileID: 0}
   attackState: {fileID: 0}
+  deadState: {fileID: 0}
   player: {fileID: 45802362}
   cooldownAttack: 2
   activeColliderTime: 2
   overlapRadius: 4
   speed: 0.05
   rb: {fileID: 0}
+  anim: {fileID: 0}
   coll: {fileID: 0}
 --- !u!50 &365375977
 Rigidbody2D:
@@ -705,7 +707,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017361480}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

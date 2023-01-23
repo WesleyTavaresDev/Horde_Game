@@ -15,6 +15,7 @@ namespace Enemy.Bat
         public override void Enter()
         {
             base.Enter();
+            bat.anim.SetBool("BatMove", true);
         }
 
         public override void HandleInput()
@@ -46,12 +47,11 @@ namespace Enemy.Bat
         public override void Exit()
         {
             base.Exit();
-            bat.rb.velocity -= bat.rb.velocity;
+            bat.anim.SetBool("BatMove", false);
         }
 
         private void Move(Vector2 direction)
         {
-            
             bat.gameObject.transform.Translate(direction * bat.speed);
         }
     }

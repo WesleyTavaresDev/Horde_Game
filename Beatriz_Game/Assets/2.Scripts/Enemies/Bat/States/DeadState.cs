@@ -12,7 +12,14 @@ namespace Enemy.Bat
         public override void Enter()
         {
             base.Enter();
-            Destroy(bat.gameObject);
+            bat.anim.SetBool("BatDead", true);
+        }
+
+        public override void PhysicsUpdate()
+        {
+            base.PhysicsUpdate();
+
+            bat.rb.velocity -= new Vector2(0, 1 * Time.deltaTime);
         }
     }
 }
