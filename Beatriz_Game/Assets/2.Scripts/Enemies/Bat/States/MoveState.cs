@@ -28,8 +28,6 @@ namespace Enemy.Bat
 
             target = new Vector2(bat.player.transform.position.x - bat.gameObject.transform.position.x,
             bat.player.transform.position.y - bat.gameObject.transform.position.y).normalized;
-
-            Debug.Log(Vector2.Distance(bat.gameObject.transform.position, bat.player.transform.position));
         }
  
         public override void PhysicsUpdate()
