@@ -18,6 +18,7 @@ public class Attack : State
     {
         base.Enter();
         entity.anim.SetBool("Attack", true);
+
         attackTime = entity.attackClip.length;
         combo = false;
         entity.attacking = true;
@@ -47,6 +48,7 @@ public class Attack : State
     {
         base.Exit();
         entity.anim.SetBool("Attack", false);
+
         entity.attacking = false;
     }
 }
