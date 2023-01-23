@@ -28,7 +28,7 @@ namespace Enemy.Bat
             base.LogicUpdate();
 
             target = new Vector2(bat.player.transform.position.x - bat.gameObject.transform.position.x,
-            (bat.player.transform.position.y - bat.gameObject.transform.position.y) + 1).normalized;
+            (bat.player.transform.position.y - bat.gameObject.transform.position.y) + 0.7f).normalized;
 
             if(!bat.IsPlayerClose())
                 state.ChangeState(bat.idleState);
@@ -52,7 +52,7 @@ namespace Enemy.Bat
 
         private void Move(Vector2 direction)
         {
-            bat.gameObject.transform.Translate(direction * bat.speed);
+            bat.gameObject.transform.Translate(direction * bat.speed * Time.deltaTime);
         }
     }
 }   
