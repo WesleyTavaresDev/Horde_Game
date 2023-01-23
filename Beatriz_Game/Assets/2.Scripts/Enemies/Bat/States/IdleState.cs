@@ -14,6 +14,11 @@ namespace Enemy.Bat
             base.Enter();
         }
 
+        public override void HandleInput()
+        {
+            base.HandleInput();
+        }
+
         public override void LogicUpdate()
         {
             base.LogicUpdate();
