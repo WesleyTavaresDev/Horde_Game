@@ -14,12 +14,9 @@ namespace Enemy.Bat
 
         [Header("Movement", order =1)]
         public GameObject player;
-        
-        [Header("Attack", order = 2)]
-        public float cooldownAttack;
-        public float activeColliderTime;
-        [SerializeField] private float overlapRadius;
         public float speed;
+        
+        [SerializeField] private float overlapRadius;
         public Rigidbody2D rb;
         public Animator anim;
         public Collider2D coll;
@@ -47,10 +44,7 @@ namespace Enemy.Bat
             batSM.currentState.LogicUpdate();
         }
 
-        void FixedUpdate() 
-        {
-            batSM.currentState.PhysicsUpdate();    
-        }
+        void FixedUpdate() => batSM.currentState.PhysicsUpdate();    
 
         private void OnTriggerEnter2D(Collider2D other) 
         {
@@ -58,15 +52,9 @@ namespace Enemy.Bat
                 batSM.ChangeState(deadState);   
         }
 
-        public bool IsPlayerClose()
-        {
-            return Physics2D.OverlapCircle(transform.position, overlapRadius, 1 << 6);
-        }
-
-        private void Dead()
-        {
-            Destroy(this.gameObject);
-        }
+        public bool IsPlayerClose() => Physics2D.OverlapCircle(transform.position, overlapRadius, 1 << 6);
+        
+        private void Dead() => Destroy(this.gameObject);
         
         private void OnDrawGizmos() 
         {
