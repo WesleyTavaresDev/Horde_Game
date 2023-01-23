@@ -9,21 +9,30 @@ namespace Enemy.Bat
         [HideInInspector] public StateMachine batSM;
         [HideInInspector] public IdleState idleState;
         [HideInInspector] public MoveState moveState;
+        [HideInInspector] public AttackState attackState;
 
+        [Header("Movement", order =1)]
         public GameObject player;
-
+        
+        [Header("Attack", order = 2)]
+        public float cooldownAttack;
+        public float activeColliderTime;
         [SerializeField] private float overlapRadius;
         public float speed;
         public Rigidbody2D rb;
+        public Collider2D coll;
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
+            coll = GetComponent<Collider2D>();
+            coll.enabled = false;
 
             batSM = new();
 
             idleState = new(this, batSM);
             moveState = new(this, batSM);
-            
+            attackState = new(this, batSM);
+
             batSM.Initialize(idleState);
 
         }
