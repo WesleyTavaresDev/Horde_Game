@@ -28,6 +28,10 @@ namespace Enemy.Bat
 
             target = new Vector2(bat.player.transform.position.x - bat.gameObject.transform.position.x,
             bat.player.transform.position.y - bat.gameObject.transform.position.y).normalized;
+
+            if(!bat.IsPlayerClose())
+                state.ChangeState(bat.idleState);
+        
         }
  
         public override void PhysicsUpdate()
@@ -36,12 +40,13 @@ namespace Enemy.Bat
             if(Vector2.Distance(bat.gameObject.transform.position, bat.player.transform.position) > 1.5f)
                 Move(target);
             else
-                bat.rb.velocity -= bat.rb.velocity;
+                state.ChangeState(bat.attackState);
         }
 
         public override void Exit()
         {
             base.Exit();
+            bat.rb.velocity -= bat.rb.velocity;
         }
 
         private void Move(Vector2 direction)

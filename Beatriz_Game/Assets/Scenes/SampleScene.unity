@@ -535,10 +535,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idleState: {fileID: 0}
   moveState: {fileID: 0}
+  attackState: {fileID: 0}
   player: {fileID: 45802362}
+  cooldownAttack: 2
+  activeColliderTime: 2
   overlapRadius: 4
   speed: 0.5
   rb: {fileID: 0}
+  coll: {fileID: 0}
 --- !u!50 &365375977
 Rigidbody2D:
   serializedVersion: 4
