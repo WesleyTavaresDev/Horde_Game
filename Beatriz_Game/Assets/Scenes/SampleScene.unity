@@ -540,7 +540,7 @@ MonoBehaviour:
   cooldownAttack: 2
   activeColliderTime: 2
   overlapRadius: 4
-  speed: 0.5
+  speed: 0.05
   rb: {fileID: 0}
   coll: {fileID: 0}
 --- !u!50 &365375977
@@ -705,15 +705,15 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017361480}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13257211, y: 0}
+  m_Offset: {x: -0.018700302, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7566821
+  m_Radius: 0.8705539
 --- !u!50 &1017361483
 Rigidbody2D:
   serializedVersion: 4
@@ -927,9 +927,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.13257211, y: 0}
+  m_Offset: {x: -0.0037171245, y: 0}
   serializedVersion: 2
-  m_Radius: 0.7566821
+  m_Radius: 0.8855371
 --- !u!114 &1676219941
 MonoBehaviour:
   m_ObjectHideFlags: 0

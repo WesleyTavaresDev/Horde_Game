@@ -52,7 +52,7 @@ namespace Enemy.Bat
         private void Move(Vector2 direction)
         {
             
-            bat.rb.AddForce(direction * bat.speed, ForceMode2D.Force);
+            bat.gameObject.transform.Translate(direction * bat.speed);
         }
     }
 }   

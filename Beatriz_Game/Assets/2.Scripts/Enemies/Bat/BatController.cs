@@ -48,6 +48,12 @@ namespace Enemy.Bat
             batSM.currentState.PhysicsUpdate();    
         }
 
+        private void OnTriggerEnter2D(Collider2D other) 
+        {
+            if(other.CompareTag("PlayerAttack"))
+                Destroy(this.gameObject);    
+        }
+
         public bool IsPlayerClose()
         {
             return Physics2D.OverlapCircle(transform.position, overlapRadius, 1 << 6);
