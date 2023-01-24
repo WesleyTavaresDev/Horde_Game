@@ -7,7 +7,7 @@ namespace Player
 { 
     public class PlayerController : MonoBehaviour
     {
-    #region States and Components
+        #region States and Components
         [HideInInspector] public StateMachine playerSM;
         [HideInInspector] public IdleState idleState;
         [HideInInspector] public RunState runState; 
