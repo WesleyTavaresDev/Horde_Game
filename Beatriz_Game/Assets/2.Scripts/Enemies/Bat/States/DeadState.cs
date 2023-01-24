@@ -19,7 +19,7 @@ namespace Enemy.Bat
         {
             base.PhysicsUpdate();
 
-            bat.rb.velocity -= new Vector2(0, 1 * Time.deltaTime);
+            bat.rb.velocity -= new Vector2(0, 2 * Time.deltaTime);
         }
     }
 }
