@@ -26,9 +26,11 @@ namespace Player
         public float smoothTime;
         [HideInInspector] public float currentRef;
 
-        [Header("Attack", order = 2)]
-        public AnimationClip attackClip;
-        public AnimationClip comboAttackClip;
+        [Header("Attack", order = 2)]        
+        public float damage;
+
+        [Header("Attributes", order = 3)]
+        public PlayerStats stats;
      
         #region MonoBehaviour
         void Awake()

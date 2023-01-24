@@ -7,27 +7,29 @@ public class Attack : State
 {
     private float attackTime;
     private bool combo;
-    PlayerController entity;
+    PlayerController player;
     
     public Attack(PlayerController entity, StateMachine state) : base(state)
     {
-        this.entity = entity; 
+        this.player = entity; 
     }
 
     public override void Enter()
     {
         base.Enter();
-        entity.anim.SetBool("Attack", true);
+        player.anim.SetBool("Attack", true);
+        
+        player.damage = player.stats.GetStat(PlayerStatsEnum.normalAttackDamage);
 
-        attackTime = entity.attackClip.length;
+        attackTime = player.stats.attackClip.length;
         combo = false;
-        entity.attacking = true;
+        player.attacking = true;
     }
 
     public override void HandleInput()
     {
         base.HandleInput();
-        if(entity.attackInput.WasPressedThisFrame())
+        if(player.attackInput.WasPressedThisFrame())
             combo = true;
     }
 
@@ -38,17 +40,15 @@ public class Attack : State
 
         if(attackTime <= 0f)
         {   
-            state.ChangeState(combo ? entity.comboState : entity.idleState);
+            state.ChangeState(combo ? player.comboState : player.idleState);
         }   
-            
-
     }
 
     public override void Exit()
     {
         base.Exit();
-        entity.anim.SetBool("Attack", false);
+        player.anim.SetBool("Attack", false);
 
-        entity.attacking = false;
+        player.attacking = false;
     }
 }
