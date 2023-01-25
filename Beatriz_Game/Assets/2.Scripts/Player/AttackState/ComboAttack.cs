@@ -6,10 +6,10 @@ namespace Player
 {
     public class ComboAttack : State
     {
-        PlayerController player;
+        PlayerAttackController player;
         private float comboTime;
         
-        public ComboAttack(PlayerController player, StateMachine state) : base(state)
+        public ComboAttack(PlayerAttackController player, StateMachine state) : base(state)
         {
             this.player = player;
         }

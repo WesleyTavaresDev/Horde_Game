@@ -13,7 +13,7 @@ namespace Player
         private PlayerInput input;
         private Rigidbody2D rb;
         private PlayerJumpController jumpController;
-        private PlayerController playerController;
+        private global::PlayerAttackController playerController;
 
         void Start()
         {
@@ -21,7 +21,7 @@ namespace Player
             input = GetComponent<PlayerInput>();
             coll = GetComponent<BoxCollider2D>();
             jumpController = GetComponent<PlayerJumpController>();
-            playerController = GetComponent<PlayerController>();
+            playerController = GetComponent<global::PlayerAttackController>();
 
             JumpInput().performed += OnJump;
         }

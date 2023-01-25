@@ -7,9 +7,9 @@ public class Attack : State
 {
     private float attackTime;
     private bool combo;
-    PlayerController player;
+    PlayerAttackController player;
     
-    public Attack(PlayerController entity, StateMachine state) : base(state)
+    public Attack(PlayerAttackController entity, StateMachine state) : base(state)
     {
         this.player = entity; 
     }
