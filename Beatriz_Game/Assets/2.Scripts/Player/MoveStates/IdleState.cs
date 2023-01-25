@@ -7,15 +7,15 @@ namespace Player
 {
     public class IdleState : Grounded
     {
-        public IdleState(PlayerController entity, StateMachine state) : base(entity,state)
+        public IdleState(PlayerController player, StateMachine state) : base(player,state)
         {
-            this.entity = entity;
+            this.player = player;
         }
 
         public override void Enter()
         {
             base.Enter();
-            entity.anim.SetBool("Idle", true);
+            player.anim.SetBool("Idle", true);
         }
 
         public override void HandleInput()
@@ -27,14 +27,14 @@ namespace Player
         {
             base.LogicUpdate();
 
-            if(entity.move.WasPerformedThisFrame())
-                state.ChangeState(entity.runState);
+            if(player.move.WasPerformedThisFrame())
+                state.ChangeState(player.runState);
         }
 
         public override void Exit()
         {
             base.Exit();
-            entity.anim.SetBool("Idle", false);
+            player.anim.SetBool("Idle", false);
         }
     }
 }

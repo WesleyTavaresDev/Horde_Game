@@ -6,19 +6,20 @@ namespace Player
 {
     public class ComboAttack : State
     {
-        PlayerController entity;
+        PlayerController player;
         private float comboTime;
         
-        public ComboAttack(PlayerController entity, StateMachine state) : base(state)
+        public ComboAttack(PlayerController player, StateMachine state) : base(state)
         {
-            this.entity = entity;
+            this.player = player;
         }
 
         public override void Enter()
         {
             base.Enter();
-            entity.anim.SetBool("AttackCombo", true);
-            comboTime = entity.comboAttackClip.length;
+            player.damage = player.stats.GetStat(PlayerStatsEnum.comboAttackDamage);
+            player.anim.SetBool("AttackCombo", true);
+            comboTime = player.stats.comboAttackClip.length;
         }
 
         public override void LogicUpdate()
@@ -26,13 +27,13 @@ namespace Player
             base.LogicUpdate();
             comboTime -= Time.deltaTime;
             if(comboTime <= 0f)
-                state.ChangeState(entity.idleState);
+                state.ChangeState(player.idleState);
         }
 
         public override void Exit()
         {
             base.Exit();
-            entity.anim.SetBool("AttackCombo", false);
+            player.anim.SetBool("AttackCombo", false);
         }
     }
 }

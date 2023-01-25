@@ -32,6 +32,8 @@ namespace Player
 
         private void Update()
         {
+
+            
             OnGround = IsGrounded();
 
             switch (animationJumpState)

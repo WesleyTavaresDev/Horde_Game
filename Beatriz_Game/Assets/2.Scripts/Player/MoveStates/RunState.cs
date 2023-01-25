@@ -8,28 +8,28 @@ namespace Player
         private float movementInput;
         private float speed;
 
-        public RunState(PlayerController entity, StateMachine state) : base(entity, state) => this.entity = entity;
+        public RunState(PlayerController player, StateMachine state) : base(player, state) => this.player = player;
 
         public override void Enter()
         {
             base.Enter();
-            entity.anim.SetBool("Moving", true);
+            player.anim.SetBool("Moving", true);
         }
 
         public override void HandleInput()
         {
             base.HandleInput();
-            movementInput = entity.move.ReadValue<float>();
+            movementInput = player.move.ReadValue<float>();
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
             Flip();
-            speed = Mathf.SmoothDamp(speed, entity.maxHorizontalSpeed, ref entity.currentRef, entity.smoothTime);
+            speed = Mathf.SmoothDamp(speed, player.maxHorizontalSpeed, ref player.currentRef, player.smoothTime);
 
             if(movementInput == 0)
-                state.ChangeState(entity.idleState);
+                state.ChangeState(player.idleState);
         }
 
         public override void PhysicsUpdate()
@@ -41,20 +41,20 @@ namespace Player
         public override void Exit()
         {
             base.Exit();
-            entity.rb.velocity -= new Vector2(Mathf.Lerp(entity.rb.velocity.x, 0, 0f), 0f);
-            entity.anim.SetBool("Moving", false);
+            player.rb.velocity -= new Vector2(Mathf.Lerp(player.rb.velocity.x, 0, 0f), 0f);
+            player.anim.SetBool("Moving", false);
         }
 
         private void Flip()
         {
-            Vector2 rotation = entity.gameObject.transform.eulerAngles;
+            Vector2 rotation = player.gameObject.transform.eulerAngles;
             
             if(movementInput > 0 && rotation.y == 180)
                 rotation.y = 0;
             else if(movementInput < 0 && rotation.y == 0)
                 rotation.y = 180;
 
-            entity.gameObject.transform.eulerAngles = rotation;
+            player.gameObject.transform.eulerAngles = rotation;
         }
     }
 }

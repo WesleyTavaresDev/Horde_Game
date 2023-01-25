@@ -6,23 +6,23 @@ namespace Player
 {
     public class Grounded : State
     {
-        protected PlayerController entity;
-        public Grounded(PlayerController entity, StateMachine state) : base(state)
+        protected PlayerController player;
+        public Grounded(PlayerController player, StateMachine state) : base(state)
         {
-            this.entity = entity;
+            this.player = player;
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
             
-            if(entity.attackInput.WasPerformedThisFrame())
-                state.ChangeState(entity.attackState);
+            if(player.attackInput.WasPerformedThisFrame())
+                state.ChangeState(player.attackState);
         }
         
         public void Move(Vector2 force, ForceMode2D forceMode2D)
         {
-            entity.rb.AddForce(force * Time.deltaTime, forceMode2D);
+            player.rb.AddForce(force * Time.deltaTime, forceMode2D);
         }
 
     }
