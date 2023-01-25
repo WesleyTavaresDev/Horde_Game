@@ -26,8 +26,8 @@ namespace Player
         {
             base.LogicUpdate();
             comboTime -= Time.deltaTime;
-            if(comboTime <= 0f)
-                state.ChangeState(player.idleState);
+           /* if(comboTime <= 0f)
+                state.ChangeState(player.);*/
         }
 
         public override void Exit()

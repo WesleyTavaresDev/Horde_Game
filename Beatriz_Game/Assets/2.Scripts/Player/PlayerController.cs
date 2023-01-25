@@ -9,8 +9,6 @@ namespace Player
     {
         #region States and Components
         [HideInInspector] public StateMachine playerSM;
-        [HideInInspector] public IdleState idleState;
-        [HideInInspector] public RunState runState; 
         [HideInInspector] public Attack attackState;
         [HideInInspector] public ComboAttack comboState;
         [HideInInspector] public PlayerInput input;
@@ -40,12 +38,9 @@ namespace Player
             rb = GetComponent<Rigidbody2D>();
 
             playerSM = new();
-            idleState = new(this, playerSM);
-            runState = new(this, playerSM);
             attackState = new(this, playerSM);
             comboState = new(this, playerSM);
             
-            playerSM.Initialize(idleState);
         }
 
         void Start()
@@ -56,13 +51,13 @@ namespace Player
 
         void Update()
         {
-            playerSM.currentState.HandleInput();
-            playerSM.currentState.LogicUpdate();
+          /*  playerSM.currentState.HandleInput();
+            playerSM.currentState.LogicUpdate();*/
         }
 
         void FixedUpdate()
         {
-            playerSM.currentState.PhysicsUpdate();
+           // playerSM.currentState.PhysicsUpdate();
         }
         #endregion
 

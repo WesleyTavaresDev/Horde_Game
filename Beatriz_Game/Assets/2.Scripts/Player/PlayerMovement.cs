@@ -7,17 +7,7 @@ namespace Player
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(PlayerController))]
     public class PlayerMovement : MonoBehaviour
-    {
-
-/*
-todo 1- Create a movement class
-
-todo 2 - Write Movement logic 
-
-todo 3 - Write Flip
-
-todo 4 - Substitute Algorithm -> moveState to movementControllerClass
-*/  
+    {  
         [SerializeField] private float maxHorizontalSpeed;
         [SerializeField] private float smoothTime;
 

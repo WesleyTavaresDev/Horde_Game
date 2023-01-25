@@ -40,7 +40,7 @@ public class Attack : State
 
         if(attackTime <= 0f)
         {   
-            state.ChangeState(combo ? player.comboState : player.idleState);
+            state.ChangeState(player.comboState );
         }   
     }
 
