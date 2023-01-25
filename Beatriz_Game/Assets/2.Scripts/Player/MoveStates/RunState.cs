@@ -13,29 +13,29 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            player.anim.SetBool("Moving", true);
+          //  player.anim.SetBool("Moving", true);
         }
 
         public override void HandleInput()
         {
             base.HandleInput();
-            movementInput = player.move.ReadValue<float>();
+          //  movementInput = player.move.ReadValue<float>();
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            Flip();
+         /*   Flip();
             speed = Mathf.SmoothDamp(speed, player.maxHorizontalSpeed, ref player.currentRef, player.smoothTime);
 
             if(movementInput == 0)
-                state.ChangeState(player.idleState);
+                state.ChangeState(player.idleState);*/
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            Move(Vector2.right * speed * movementInput, ForceMode2D.Force);
+           // Move(Vector2.right * speed * movementInput, ForceMode2D.Force);
         }
 
         public override void Exit()
@@ -45,7 +45,7 @@ namespace Player
             player.anim.SetBool("Moving", false);
         }
 
-        private void Flip()
+     /*   private void Flip()
         {
             Vector2 rotation = player.gameObject.transform.eulerAngles;
             
@@ -55,6 +55,6 @@ namespace Player
                 rotation.y = 180;
 
             player.gameObject.transform.eulerAngles = rotation;
-        }
+        }*/
     }
 }
