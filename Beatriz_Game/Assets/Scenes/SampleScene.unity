@@ -272,8 +272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180ae8af08b79e091aaee3f5c1a330eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleState: {fileID: 0}
-  runState: {fileID: 0}
   attackState: {fileID: 0}
   comboState: {fileID: 0}
   input: {fileID: 0}
@@ -426,16 +424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63261c32444fcdfb68a4313acc92e5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 8901e859-0507-49d9-95d9-448f8dafaf39
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  movementInput: 0
   maxHorizontalSpeed: 25
   smoothTime: 0.1
 --- !u!1 &365375972
@@ -1283,7 +1271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1017361481
 Transform:
   m_ObjectHideFlags: 0
@@ -2519,7 +2507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1676219938
 Transform:
   m_ObjectHideFlags: 0

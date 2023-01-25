@@ -12,21 +12,17 @@ namespace Player
         [SerializeField] private float smoothTime;
 
         private InputAction move; 
-        private float movementInput;
         private float speed;
+        private float movementInput;
         private float currentRef;
+        
         private Rigidbody2D rb;
         private Animator anim;
 
-        private void OnEnable() 
-        {
-            move.canceled +=  OnStop;
-        }
+        private void OnEnable()  => move.canceled +=  OnStop;
 
-        private void OnDisable() 
-        {
-            move.canceled -=  OnStop;
-        }
+        private void OnDisable()  => move.canceled -=  OnStop;
+        
         void Awake()
         {
             anim    = GetComponent<Animator>();
@@ -34,15 +30,9 @@ namespace Player
             move    = GetComponent<PlayerInput>().actions["Move"];
         }
 
-        private void Update()
-        {
-            movementInput = move.ReadValue<float>(); 
-        }
+        private void Update() => movementInput = move.ReadValue<float>(); 
 
-        private void FixedUpdate()
-        {
-            OnMove();
-        }
+        private void FixedUpdate() => OnMove();
 
         private void LateUpdate()
         {
@@ -57,16 +47,9 @@ namespace Player
             rb.velocity += new Vector2(movementInput * Time.smoothDeltaTime * speed, 0f);
         }
 
-        private void OnStop(InputAction.CallbackContext context)
-        {
-            rb.velocity -= new Vector2(rb.velocity.x, 0);
-        }
+        private void OnStop(InputAction.CallbackContext context) => rb.velocity -= new Vector2(rb.velocity.x, 0);
 
-        private void PlayMovementAnimation()
-        {
-            anim.SetBool("Moving", move.ReadValue<float>() != 0f);
-        }
-
+        
         private void Flip()
         {
             Vector2 rotation = this.transform.eulerAngles;
@@ -78,6 +61,8 @@ namespace Player
 
             this.gameObject.transform.eulerAngles = rotation;
         }
+        
+        private void PlayMovementAnimation() => anim.SetBool("Moving", move.ReadValue<float>() != 0f);
 
     }
 }
