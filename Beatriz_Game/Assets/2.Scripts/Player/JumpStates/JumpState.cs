@@ -28,7 +28,7 @@ namespace Player
 
         private void OnJump(InputAction.CallbackContext context)
         {
-            if(jumpController.OnGround && !playerController.IsAttacking()) 
+            if(jumpController.OnGround && !playerController.IsAttacking() && context.ReadValueAsButton()) 
                 Jump();
         }
 
