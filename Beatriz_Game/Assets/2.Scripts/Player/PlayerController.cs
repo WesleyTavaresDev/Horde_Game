@@ -12,17 +12,10 @@ namespace Player
         [HideInInspector] public Attack attackState;
         [HideInInspector] public ComboAttack comboState;
         [HideInInspector] public PlayerInput input;
-        [HideInInspector] public InputAction move;
         [HideInInspector] public InputAction attackInput;
         [HideInInspector] public bool attacking;
         [HideInInspector] public Animator anim;
-        [HideInInspector] public Rigidbody2D rb;
     #endregion
-
-        [Header("Movement", order = 1)]
-        public float maxHorizontalSpeed;
-        public float smoothTime;
-        [HideInInspector] public float currentRef;
 
         [Header("Attack", order = 2)]        
         public float damage;
@@ -35,7 +28,6 @@ namespace Player
         {
             anim = GetComponent<Animator>();
             input = GetComponent<PlayerInput>();
-            rb = GetComponent<Rigidbody2D>();
 
             playerSM = new();
             attackState = new(this, playerSM);
@@ -45,7 +37,6 @@ namespace Player
 
         void Start()
         {
-            move = input.actions["Move"];
             attackInput = input.actions["AttackMeele"];
 	    }
 
