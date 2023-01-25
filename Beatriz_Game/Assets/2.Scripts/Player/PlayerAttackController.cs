@@ -11,6 +11,7 @@ namespace Player
         [HideInInspector] public StateMachine playerSM;
         [HideInInspector] public Attack attackState;
         [HideInInspector] public ComboAttack comboState;
+        [HideInInspector] public InactiveAttack inactive;
         [HideInInspector] public PlayerInput input;
         [HideInInspector] public InputAction attackInput;
         [HideInInspector] public bool attacking;
@@ -30,9 +31,11 @@ namespace Player
             input = GetComponent<PlayerInput>();
 
             playerSM = new();
+            inactive = new(this, playerSM);
             attackState = new(this, playerSM);
             comboState = new(this, playerSM);
             
+            playerSM.Initialize(inactive);
         }
 
         void Start()
@@ -42,13 +45,13 @@ namespace Player
 
         void Update()
         {
-          /*  playerSM.currentState.HandleInput();
-            playerSM.currentState.LogicUpdate();*/
+            playerSM.currentState.HandleInput();
+            playerSM.currentState.LogicUpdate();
         }
 
         void FixedUpdate()
         {
-           // playerSM.currentState.PhysicsUpdate();
+            playerSM.currentState.PhysicsUpdate();
         }
         #endregion
 

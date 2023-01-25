@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 45802373}
   - component: {fileID: 45802374}
   - component: {fileID: 45802375}
+  - component: {fileID: 45802376}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -274,16 +275,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackState: {fileID: 0}
   comboState: {fileID: 0}
+  inactive: {fileID: 0}
   input: {fileID: 0}
-  move:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: cd21f00d-d99f-4b28-80d6-5fac8c1c4fec
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
   attackInput:
     m_Name: 
     m_Type: 0
@@ -295,10 +288,6 @@ MonoBehaviour:
     m_Flags: 0
   attacking: 0
   anim: {fileID: 45802367}
-  rb: {fileID: 45802365}
-  maxHorizontalSpeed: 750
-  smoothTime: 0.05
-  currentRef: 0
   damage: 0
   stats: {fileID: 11400000, guid: 799a0bede4a6dc0d6b0b45a9695253b2, type: 2}
 --- !u!114 &45802369
@@ -424,8 +413,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63261c32444fcdfb68a4313acc92e5ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHorizontalSpeed: 25
+  maxHorizontalSpeed: 20
   smoothTime: 0.1
+--- !u!114 &45802376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45802362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fbe59e793398819298a5e833ffa95dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &365375972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1017361481
 Transform:
   m_ObjectHideFlags: 0
@@ -1294,7 +1295,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017361480}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -2507,7 +2508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1676219938
 Transform:
   m_ObjectHideFlags: 0
@@ -2551,7 +2552,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676219937}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1

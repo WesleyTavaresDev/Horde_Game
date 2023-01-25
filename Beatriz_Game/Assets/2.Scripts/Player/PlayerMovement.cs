@@ -18,26 +18,26 @@ namespace Player
         
         private Rigidbody2D rb;
         private Animator anim;
+        private PlayerAttackController attack;
 
         private void OnEnable()  => move.canceled +=  OnStop;
 
-        private void OnDisable()  => move.canceled -=  OnStop;
+        private void OnDisable() => move.canceled -=  OnStop;
         
         void Awake()
         {
             anim    = GetComponent<Animator>();
             rb      = GetComponent<Rigidbody2D>();
+            attack  = GetComponent<PlayerAttackController>();
             move    = GetComponent<PlayerInput>().actions["Move"];
         }
 
-        private void Update() => movementInput = move.ReadValue<float>(); 
-
+        private void Update() =>
+            movementInput = attack.IsAttacking() ? 0 : move.ReadValue<float>(); 
+        
         private void FixedUpdate() => OnMove();
 
-        private void LateUpdate()
-        {
-            PlayMovementAnimation();
-        }
+        private void LateUpdate() => PlayMovementAnimation();
 
         private void OnMove()
         {
@@ -49,7 +49,6 @@ namespace Player
 
         private void OnStop(InputAction.CallbackContext context) => rb.velocity -= new Vector2(rb.velocity.x, 0);
 
-        
         private void Flip()
         {
             Vector2 rotation = this.transform.eulerAngles;

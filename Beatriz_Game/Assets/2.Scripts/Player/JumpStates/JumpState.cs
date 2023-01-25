@@ -13,7 +13,7 @@ namespace Player
         private PlayerInput input;
         private Rigidbody2D rb;
         private PlayerJumpController jumpController;
-        private global::PlayerAttackController playerController;
+        private PlayerAttackController playerAttackController;
 
         void Start()
         {
@@ -21,14 +21,14 @@ namespace Player
             input = GetComponent<PlayerInput>();
             coll = GetComponent<BoxCollider2D>();
             jumpController = GetComponent<PlayerJumpController>();
-            playerController = GetComponent<global::PlayerAttackController>();
+            playerAttackController = GetComponent<PlayerAttackController>();
 
             JumpInput().performed += OnJump;
         }
 
         private void OnJump(InputAction.CallbackContext context)
         {
-            if(jumpController.OnGround && !playerController.IsAttacking() && context.ReadValueAsButton()) 
+            if(jumpController.OnGround && !playerAttackController.IsAttacking() && context.ReadValueAsButton()) 
                 Jump();
         }
 
