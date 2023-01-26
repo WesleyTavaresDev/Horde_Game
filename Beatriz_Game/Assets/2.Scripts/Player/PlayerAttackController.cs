@@ -18,15 +18,14 @@ namespace Player
         [HideInInspector] public Animator anim;
     #endregion
 
-        [Header("Attack", order = 2)]        
         public float damage;
 
-        [Header("Attributes", order = 3)]
-        public PlayerStats stats;
+        public PlayerController playerController;
      
         #region MonoBehaviour
         void Awake()
         {
+            playerController = GetComponent<PlayerController>();
             anim = GetComponent<Animator>();
             input = GetComponent<PlayerInput>();
 
@@ -38,10 +37,8 @@ namespace Player
             playerSM.Initialize(inactive);
         }
 
-        void Start()
-        {
-            attackInput = input.actions["AttackMeele"];
-	    }
+        void Start() => attackInput = input.actions["AttackMeele"];
+	    
 
         void Update()
         {
@@ -49,10 +46,8 @@ namespace Player
             playerSM.currentState.LogicUpdate();
         }
 
-        void FixedUpdate()
-        {
-            playerSM.currentState.PhysicsUpdate();
-        }
+        void FixedUpdate() => playerSM.currentState.PhysicsUpdate();
+        
         #endregion
 
         public bool IsAttacking() => attacking;

@@ -19,9 +19,9 @@ public class Attack : State
         base.Enter();
         player.anim.SetBool("Attack", true);
         
-        player.damage = player.stats.GetStat(PlayerStatsEnum.normalAttackDamage);
+        player.damage = player.playerController.stats.GetStat(PlayerStatsEnum.normalAttackDamage);
 
-        attackTime = player.stats.attackClip.length;
+        attackTime = player.playerController.stats.attackClip.length;
         combo = false;
         player.attacking = true;
     }

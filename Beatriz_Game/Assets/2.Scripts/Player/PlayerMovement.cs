@@ -47,7 +47,12 @@ namespace Player
             rb.velocity += new Vector2(movementInput * Time.smoothDeltaTime * speed, 0f);
         }
 
-        private void OnStop(InputAction.CallbackContext context) => rb.velocity -= new Vector2(rb.velocity.x, 0);
+        private void OnStop(InputAction.CallbackContext context)
+        {
+            movementInput = 0;
+            rb.velocity -= new Vector2(rb.velocity.x, 0);
+        } 
+            
 
         private void Flip()
         {

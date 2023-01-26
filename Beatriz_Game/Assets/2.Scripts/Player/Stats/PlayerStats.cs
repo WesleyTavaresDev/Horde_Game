@@ -8,10 +8,9 @@ public class PlayerStats : ScriptableObject
 
     public List<PlayerStatsInfo> stats = new List<PlayerStatsInfo>();
     
-    [Header("Animations clips", order = 1)]
     public AnimationClip attackClip;
     public AnimationClip comboAttackClip;
-
+    
     public float GetStat(PlayerStatsEnum stat)
     {
         foreach (var s in stats)

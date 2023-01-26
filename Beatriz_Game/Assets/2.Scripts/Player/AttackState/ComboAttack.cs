@@ -17,9 +17,9 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            player.damage = player.stats.GetStat(PlayerStatsEnum.comboAttackDamage);
+            player.damage = player.playerController.stats.GetStat(PlayerStatsEnum.comboAttackDamage);
             player.anim.SetBool("AttackCombo", true);
-            comboTime = player.stats.comboAttackClip.length;
+            comboTime = player.playerController.stats.comboAttackClip.length;
         }
 
         public override void LogicUpdate()
