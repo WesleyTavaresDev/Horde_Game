@@ -12,14 +12,18 @@ namespace Player
 
         private PlayerInput input;
         private Rigidbody2D rb;
+        private Animator anim;
         private PlayerJumpController jumpController;
         private PlayerAttackController playerAttackController;
+        private readonly int jumpHash = Animator.StringToHash("Jump");
+
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             input = GetComponent<PlayerInput>();
             coll = GetComponent<BoxCollider2D>();
+            anim = GetComponent<Animator>();
             jumpController = GetComponent<PlayerJumpController>();
             playerAttackController = GetComponent<PlayerAttackController>();
 
@@ -28,18 +32,18 @@ namespace Player
 
         private void OnJump(InputAction.CallbackContext context)
         {
-            if(jumpController.OnGround && !playerAttackController.IsAttacking() && context.ReadValueAsButton()) 
+            if(jumpController.OnGround && !playerAttackController.IsAttacking()) 
                 Jump();
         }
 
         private void Jump()
         {
-            jumpController.PlayJumpAnimation();
+            anim.SetBool(jumpHash, true);
             rb.AddForce(Vector2.up * jumpForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }
 
         private InputAction JumpInput() => input.actions["Jump"];
 
-        private void OnDisable() => JumpInput().started -= OnJump;
+        private void OnDisable() => JumpInput().performed -= OnJump;
     }
 }

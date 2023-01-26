@@ -211,7 +211,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 45802362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.71, y: -2.06, z: 0}
+  m_LocalPosition: {x: -6.46, y: -0.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -401,6 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landAnimation: {fileID: 7400000, guid: fa6a0586b8786e040a0a289ba864d036, type: 2}
+  checkerMagnitude: 1.04
 --- !u!114 &45802375
 MonoBehaviour:
   m_ObjectHideFlags: 0
