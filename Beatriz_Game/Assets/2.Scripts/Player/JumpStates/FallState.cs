@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,9 @@ namespace Player
 {   
     public class FallState : MonoBehaviour
     {
+        public delegate void OnFall();
+        public static event OnFall onFall;
+
         [SerializeField] private float fallForce;
 
         private Rigidbody2D rb;
@@ -20,9 +24,17 @@ namespace Player
             anim = GetComponent<Animator>();
         }
 
-        private void OnEnable() => LandState.onLand += StopFallAnimation;
+        private void OnEnable() 
+        {
+            onFall += Fall;
+            LandState.onLand += StopFallAnimation;
+        } 
 
-        private void OnDisable() => LandState.onLand -= StopFallAnimation;
+        private void OnDisable()
+        {
+            onFall -= Fall;
+            LandState.onLand -= StopFallAnimation;
+        } 
 
         private void Update()
         {
@@ -37,7 +49,5 @@ namespace Player
         }
 
         private void StopFallAnimation() => anim.SetBool(fallHash, false);
-
-
     }
 }

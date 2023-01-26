@@ -29,6 +29,7 @@ namespace Player
 
             JumpInput().performed += OnJump;
         }
+            
 
         private void OnJump(InputAction.CallbackContext context)
         {
@@ -43,7 +44,13 @@ namespace Player
         }
 
         private InputAction JumpInput() => input.actions["Jump"];
+        private void StopJumpAnimation() => anim.SetBool(jumpHash, false);
 
-        private void OnDisable() => JumpInput().performed -= OnJump;
+        private void OnEnable() => FallState.onFall += StopJumpAnimation;
+        private void OnDisable() 
+        { 
+            JumpInput().performed -= OnJump;
+            FallState.onFall -= StopJumpAnimation;
+        }
     }
 }
