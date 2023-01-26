@@ -7,9 +7,9 @@ public class Attack : State
 {
     private float attackTime;
     private bool combo;
-    PlayerController player;
+    PlayerAttackController player;
     
-    public Attack(PlayerController entity, StateMachine state) : base(state)
+    public Attack(PlayerAttackController entity, StateMachine state) : base(state)
     {
         this.player = entity; 
     }
@@ -19,9 +19,9 @@ public class Attack : State
         base.Enter();
         player.anim.SetBool("Attack", true);
         
-        player.damage = player.stats.GetStat(PlayerStatsEnum.normalAttackDamage);
+        player.damage = player.playerController.stats.GetStat(PlayerStatsEnum.normalAttackDamage);
 
-        attackTime = player.stats.attackClip.length;
+        attackTime = player.playerController.stats.attackClip.length;
         combo = false;
         player.attacking = true;
     }
@@ -40,7 +40,7 @@ public class Attack : State
 
         if(attackTime <= 0f)
         {   
-            state.ChangeState(combo ? player.comboState : player.idleState);
+            state.ChangeState(combo ? player.comboState : player.inactive);
         }   
     }
 

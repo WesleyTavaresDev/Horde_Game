@@ -12,6 +12,12 @@ namespace Player
 
         [SerializeField] private BoxCollider2D coll;
         [SerializeField] private Vector2 checkerSize; 
+        
+
+        private readonly int jumpHash = Animator.StringToHash("Jump");
+        private readonly int fallHash = Animator.StringToHash("Fall");
+        private readonly int landHash = Animator.StringToHash("Land");
+
         private Animator anim;
 
         void Awake()
@@ -22,45 +28,18 @@ namespace Player
 
     #region playAnimations
 
-        public void PlayJumpAnimation() => animationJumpState = ANIMATION_JUMP_STATE.Jumping; 
-        public void PlayFallAnimation() => animationJumpState = ANIMATION_JUMP_STATE.Falling;
-        public void PlayLandAnimation() => animationJumpState = ANIMATION_JUMP_STATE.Landing;
-        public void PlayInactive() => animationJumpState = ANIMATION_JUMP_STATE.Inactive;
-        public bool IsPlayingFallingAnimation() => animationJumpState == ANIMATION_JUMP_STATE.Falling;
-    
+        public void PlayInactive()
+        {
+            anim.SetBool(jumpHash, false);
+            anim.SetBool(fallHash, false);
+            anim.SetBool(landHash, false);
+        }
     #endregion
 
         private void Update()
-        {
-
-            
+        {   
             OnGround = IsGrounded();
-
-            switch (animationJumpState)
-            {
-                case ANIMATION_JUMP_STATE.Inactive:
-                    anim.SetBool("Jump", false);
-                    anim.SetBool("Fall", false);
-                    anim.SetBool("Land", false);
-                break;
-
-                case ANIMATION_JUMP_STATE.Jumping:
-                    anim.SetBool("Jump", true);
-                    anim.SetBool("Idle", false);
-                    anim.SetBool("Fall", false);
-                break;
-
-                case ANIMATION_JUMP_STATE.Falling:
-                    anim.SetBool("Idle", false);
-                    anim.SetBool("Jump", false);
-                    anim.SetBool("Fall", true);
-                break;
-
-                case ANIMATION_JUMP_STATE.Landing:
-                anim.SetBool("Idle", false);
-                anim.SetBool("Fall", false);
-                break;
-            }
+            Debug.Log(OnGround);
         }
 
         private bool IsGrounded() => Physics2D.BoxCast(new Vector2(coll.bounds.center.x , transform.position.y), checkerSize, 0, Vector2.zero, 0, 1 << 7);

@@ -12,34 +12,45 @@ namespace Player
 
         private PlayerInput input;
         private Rigidbody2D rb;
+        private Animator anim;
         private PlayerJumpController jumpController;
-        private PlayerController playerController;
+        private PlayerAttackController playerAttackController;
+        private readonly int jumpHash = Animator.StringToHash("Jump");
+
 
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             input = GetComponent<PlayerInput>();
             coll = GetComponent<BoxCollider2D>();
+            anim = GetComponent<Animator>();
             jumpController = GetComponent<PlayerJumpController>();
-            playerController = GetComponent<PlayerController>();
+            playerAttackController = GetComponent<PlayerAttackController>();
 
-            JumpInput().performed += OnJump;
+            JumpInput().performed += OnJumpPerformed;
+        }
+            
+
+        private void OnJumpPerformed(InputAction.CallbackContext context)
+        {
+            if(jumpController.OnGround && !playerAttackController.IsAttacking()) 
+                Jump(jumpForce);
         }
 
-        private void OnJump(InputAction.CallbackContext context)
+        private void Jump(float force)
         {
-            if(jumpController.OnGround && !playerController.IsAttacking() && context.ReadValueAsButton()) 
-                Jump();
-        }
-
-        private void Jump()
-        {
-            jumpController.PlayJumpAnimation();
-            rb.AddForce(Vector2.up * jumpForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            anim.SetBool(jumpHash, true);
+            rb.AddForce(Vector2.up * force * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }
 
         private InputAction JumpInput() => input.actions["Jump"];
+        private void StopJumpAnimation() => anim.SetBool(jumpHash, false);
 
-        private void OnDisable() => JumpInput().started -= OnJump;
+        private void OnEnable() => FallState.onFall += StopJumpAnimation;
+        private void OnDisable() 
+        { 
+            JumpInput().performed -= OnJumpPerformed;
+            FallState.onFall -= StopJumpAnimation;
+        }
     }
 }

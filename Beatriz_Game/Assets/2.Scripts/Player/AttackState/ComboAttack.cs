@@ -6,10 +6,10 @@ namespace Player
 {
     public class ComboAttack : State
     {
-        PlayerController player;
+        PlayerAttackController player;
         private float comboTime;
         
-        public ComboAttack(PlayerController player, StateMachine state) : base(state)
+        public ComboAttack(PlayerAttackController player, StateMachine state) : base(state)
         {
             this.player = player;
         }
@@ -17,9 +17,9 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            player.damage = player.stats.GetStat(PlayerStatsEnum.comboAttackDamage);
+            player.damage = player.playerController.stats.GetStat(PlayerStatsEnum.comboAttackDamage);
             player.anim.SetBool("AttackCombo", true);
-            comboTime = player.stats.comboAttackClip.length;
+            comboTime = player.playerController.stats.comboAttackClip.length;
         }
 
         public override void LogicUpdate()
@@ -27,7 +27,7 @@ namespace Player
             base.LogicUpdate();
             comboTime -= Time.deltaTime;
             if(comboTime <= 0f)
-                state.ChangeState(player.idleState);
+                state.ChangeState(player.inactive);
         }
 
         public override void Exit()
