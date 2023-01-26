@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc62c0a8c128398f68071f77d3b320c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 750
+  jumpForce: 800
   coll: {fileID: 45802370}
 --- !u!114 &45802373
 MonoBehaviour:
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1e0a7424422cab0b5f9510fb082ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallForce: 15
+  fallForce: 75
 --- !u!114 &45802374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landAnimation: {fileID: 7400000, guid: fa6a0586b8786e040a0a289ba864d036, type: 2}
-  checkerMagnitude: 1.04
+  checkerMagnitude: 0.7
 --- !u!114 &45802375
 MonoBehaviour:
   m_ObjectHideFlags: 0

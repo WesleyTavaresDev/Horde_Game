@@ -27,20 +27,20 @@ namespace Player
             jumpController = GetComponent<PlayerJumpController>();
             playerAttackController = GetComponent<PlayerAttackController>();
 
-            JumpInput().performed += OnJump;
+            JumpInput().performed += OnJumpPerformed;
         }
             
 
-        private void OnJump(InputAction.CallbackContext context)
+        private void OnJumpPerformed(InputAction.CallbackContext context)
         {
             if(jumpController.OnGround && !playerAttackController.IsAttacking()) 
-                Jump();
+                Jump(jumpForce);
         }
 
-        private void Jump()
+        private void Jump(float force)
         {
             anim.SetBool(jumpHash, true);
-            rb.AddForce(Vector2.up * jumpForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * force * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }
 
         private InputAction JumpInput() => input.actions["Jump"];
@@ -49,7 +49,7 @@ namespace Player
         private void OnEnable() => FallState.onFall += StopJumpAnimation;
         private void OnDisable() 
         { 
-            JumpInput().performed -= OnJump;
+            JumpInput().performed -= OnJumpPerformed;
             FallState.onFall -= StopJumpAnimation;
         }
     }
