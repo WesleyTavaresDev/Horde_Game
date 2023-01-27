@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerLifeController : MonoBehaviour
 {
+    public delegate void OnHit();
+    public static event OnHit onHit;
+
     [SerializeField] private LayerMask dangerMask;
     [SerializeField] private float life;
     [SerializeField] private bool invencible;
@@ -30,9 +33,9 @@ public class PlayerLifeController : MonoBehaviour
     {
         life -= damage;
         StartCoroutine(ImmuneToDamage());   
-        
+
         if(life > 0)
-            Debug.Log("Hitted");
+            onHit?.Invoke();
         else
             Debug.Log("Dead");
     }
