@@ -15,7 +15,7 @@ namespace Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if(player.attackInput.WasPerformedThisFrame())
+            if(player.attackInput.WasPerformedThisFrame() && !player.playerHit.IsHitting())
                 state.ChangeState(player.attackState);
         }
     }

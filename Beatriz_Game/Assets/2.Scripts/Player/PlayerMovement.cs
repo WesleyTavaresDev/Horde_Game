@@ -19,6 +19,7 @@ namespace Player
         private Rigidbody2D rb;
         private Animator anim;
         private PlayerAttackController attack;
+        private PlayerHit hit;
 
         private void OnEnable()  => move.canceled +=  OnStop;
 
@@ -27,13 +28,14 @@ namespace Player
         void Awake()
         {
             anim    = GetComponent<Animator>();
+            hit     = GetComponent<PlayerHit>();
             rb      = GetComponent<Rigidbody2D>();
             attack  = GetComponent<PlayerAttackController>();
             move    = GetComponent<PlayerInput>().actions["Move"];
         }
 
         private void Update() =>
-            movementInput = attack.IsAttacking() ? 0 : move.ReadValue<float>(); 
+            movementInput = !attack.IsAttacking() && !hit.IsHitting() ? move.ReadValue<float>() : 0; 
         
         private void FixedUpdate() => OnMove();
 

@@ -13,6 +13,7 @@ namespace Player
         private PlayerInput input;
         private Rigidbody2D rb;
         private Animator anim;
+        private PlayerHit playerHit;
         private PlayerJumpController jumpController;
         private PlayerAttackController playerAttackController;
         private readonly int jumpHash = Animator.StringToHash("Jump");
@@ -20,6 +21,7 @@ namespace Player
 
         void Start()
         {
+            playerHit = GetComponent<PlayerHit>();
             rb = GetComponent<Rigidbody2D>();
             input = GetComponent<PlayerInput>();
             coll = GetComponent<BoxCollider2D>();
@@ -33,7 +35,7 @@ namespace Player
 
         private void OnJumpPerformed(InputAction.CallbackContext context)
         {
-            if(jumpController.OnGround && !playerAttackController.IsAttacking()) 
+            if(jumpController.OnGround && !playerAttackController.IsAttacking() && !playerHit.IsHitting()) 
                 Jump(jumpForce);
         }
 

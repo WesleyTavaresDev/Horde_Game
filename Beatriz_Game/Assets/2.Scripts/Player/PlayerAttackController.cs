@@ -11,6 +11,7 @@ namespace Player
         [HideInInspector] public StateMachine playerSM;
         [HideInInspector] public Attack attackState;
         [HideInInspector] public ComboAttack comboState;
+        [HideInInspector] public PlayerHit playerHit;
         [HideInInspector] public InactiveAttack inactive;
         [HideInInspector] public PlayerInput input;
         [HideInInspector] public InputAction attackInput;
@@ -26,6 +27,7 @@ namespace Player
         void Awake()
         {
             playerController = GetComponent<PlayerController>();
+            playerHit = GetComponent<PlayerHit>();
             anim = GetComponent<Animator>();
             input = GetComponent<PlayerInput>();
 

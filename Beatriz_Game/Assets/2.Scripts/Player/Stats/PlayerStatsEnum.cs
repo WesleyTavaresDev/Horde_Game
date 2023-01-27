@@ -6,4 +6,5 @@ public enum PlayerStatsEnum
     comboAttackDamage,
     fallForce,
     invencibleTime,
+    hitTime,
 }
