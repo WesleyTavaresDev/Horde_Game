@@ -39,7 +39,6 @@ namespace Player
         private void Update()
         {   
             OnGround = IsGrounded();
-            Debug.Log(OnGround);
         }
 
         private bool IsGrounded() => Physics2D.BoxCast(new Vector2(coll.bounds.center.x , transform.position.y), checkerSize, 0, Vector2.zero, 0, 1 << 7);

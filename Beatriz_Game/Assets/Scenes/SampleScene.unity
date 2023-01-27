@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 45802374}
   - component: {fileID: 45802375}
   - component: {fileID: 45802376}
+  - component: {fileID: 45802377}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -429,6 +430,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 799a0bede4a6dc0d6b0b45a9695253b2, type: 2}
+--- !u!114 &45802377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 45802362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b394a8149a0867d977f3d98b7f8925, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dangerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  life: 0
+  coll: {fileID: 45802370}
 --- !u!1 &365375972
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +461,7 @@ GameObject:
   - component: {fileID: 365375976}
   - component: {fileID: 365375977}
   - component: {fileID: 365375978}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 'Bat '
   m_TagString: Untagged
   m_Icon: {fileID: 0}

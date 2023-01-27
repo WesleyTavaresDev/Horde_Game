@@ -5,4 +5,5 @@ public enum PlayerStatsEnum
     normalAttackDamage,
     comboAttackDamage,
     fallForce,
+    invencibleTime,
 }

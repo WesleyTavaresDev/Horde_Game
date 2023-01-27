@@ -4,15 +4,52 @@ using UnityEngine;
 
 public class PlayerLifeController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private LayerMask dangerMask;
+    [SerializeField] private float life;
+    [SerializeField] private bool invencible;
+    [SerializeField] private Collider2D coll;
+    private PlayerController player;
+
     void Start()
     {
-        
+        player = GetComponent<PlayerController>();
+        coll = GetComponent<Collider2D>();
+
+        life = player.stats.GetStat(PlayerStatsEnum.healthPoints);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if(IsAttacked() && !invencible)
+        {
+            ApplyDamage(1);
+        }
+    }
+
+    private void ApplyDamage(float damage)
+    {
+        life -= damage;
+        StartCoroutine(ImmuneToDamage());   
         
+        if(life > 0)
+            Debug.Log("Hitted");
+        else
+            Debug.Log("Dead");
+    }
+
+    private IEnumerator ImmuneToDamage()
+    {
+        invencible = true;
+        yield return new WaitForSeconds(player.stats.GetStat(PlayerStatsEnum.invencibleTime));
+        invencible = false;
+    }
+
+    private bool IsAttacked() => Physics2D.OverlapBox(coll.bounds.center, coll.bounds.size, 0f, dangerMask.value);
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;    
+
+        Gizmos.DrawWireCube(coll.bounds.center, coll.bounds.size);
     }
 }
