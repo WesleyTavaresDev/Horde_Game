@@ -7,6 +7,9 @@ public class PlayerLifeController : MonoBehaviour
     public delegate void OnHit();
     public static event OnHit onHit;
 
+    public delegate void OnDie();
+    public static event OnDie onDie;
+
     [SerializeField] private LayerMask dangerMask;
     [SerializeField] private float life;
     [SerializeField] private bool invencible;
@@ -37,7 +40,7 @@ public class PlayerLifeController : MonoBehaviour
         if(life > 0)
             onHit?.Invoke();
         else
-            Debug.Log("Dead");
+            onDie?.Invoke();
     }
 
     private IEnumerator ImmuneToDamage()

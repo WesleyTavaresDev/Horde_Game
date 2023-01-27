@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class PlayerDead : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private readonly int die = Animator.StringToHash("Dead");
+    private Animator anim;
+    private void Awake()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable() => PlayerLifeController.onDie += Die;
+
+    private void OnDisable() => PlayerLifeController.onDie -= Die;
+
+    private void Die()
     {
-        
+        anim.SetBool(die, true);
     }
-}
+
+    public bool IsPlayerDead() => anim.GetBool(die);
+} 
