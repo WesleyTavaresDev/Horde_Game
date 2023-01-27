@@ -13,6 +13,9 @@ namespace Player
         private PlayerInput input;
         private Rigidbody2D rb;
         private Animator anim;
+        private PlayerHit playerHit;
+        private PlayerDead playerDead;
+
         private PlayerJumpController jumpController;
         private PlayerAttackController playerAttackController;
         private readonly int jumpHash = Animator.StringToHash("Jump");
@@ -20,9 +23,12 @@ namespace Player
 
         void Start()
         {
-            rb = GetComponent<Rigidbody2D>();
+            playerDead = GetComponent<PlayerDead>();
+            playerHit = GetComponent<PlayerHit>();
             input = GetComponent<PlayerInput>();
+
             coll = GetComponent<BoxCollider2D>();
+            rb = GetComponent<Rigidbody2D>();
             anim = GetComponent<Animator>();
             jumpController = GetComponent<PlayerJumpController>();
             playerAttackController = GetComponent<PlayerAttackController>();
@@ -33,7 +39,7 @@ namespace Player
 
         private void OnJumpPerformed(InputAction.CallbackContext context)
         {
-            if(jumpController.OnGround && !playerAttackController.IsAttacking()) 
+            if(jumpController.OnGround && !playerAttackController.IsAttacking() && !playerHit.IsHitting() && !playerDead.IsPlayerDead()) 
                 Jump(jumpForce);
         }
 
