@@ -10,6 +10,9 @@ public class PlayerLifeController : MonoBehaviour
     public delegate void OnDie();
     public static event OnDie onDie;
 
+    public delegate void UiLife(float lifePoints, float maxLifePoints);
+    public static event UiLife uiLife; 
+
     [SerializeField] private LayerMask dangerMask;
     [SerializeField] private float life;
     [SerializeField] private bool invencible;
@@ -35,6 +38,7 @@ public class PlayerLifeController : MonoBehaviour
     private void ApplyDamage(float damage)
     {
         life -= damage;
+        uiLife?.Invoke(life, player.stats.GetStat(PlayerStatsEnum.healthPoints));
         StartCoroutine(ImmuneToDamage());   
 
         if(life > 0)

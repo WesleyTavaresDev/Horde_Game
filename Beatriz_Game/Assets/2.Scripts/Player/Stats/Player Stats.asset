@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
   - statType: 0
-    value: 1
+    value: 2
   - statType: 1
     value: 1
   - statType: 2
@@ -22,8 +22,8 @@ MonoBehaviour:
   - statType: 3
     value: 30
   - statType: 4
-    value: 1.5
-  - statType: 5
     value: 1
+  - statType: 5
+    value: 0.4
   attackClip: {fileID: 7400000, guid: 976fec67b7ae98d04988be6bb4f1233f, type: 2}
   comboAttackClip: {fileID: 7400000, guid: 173fe0e9c6d3347e1aed33c5a7f69c5e, type: 2}
