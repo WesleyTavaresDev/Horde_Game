@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: 365375976}
   - component: {fileID: 365375977}
   - component: {fileID: 365375978}
+  - component: {fileID: 365375979}
   m_Layer: 8
   m_Name: 'Bat '
   m_TagString: Untagged
@@ -778,6 +779,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.2375689
+--- !u!114 &365375979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365375972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cac4e191fa450a980099890041afd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyStats: {fileID: 11400000, guid: c52334ba97c3479c6a8853a9045d75ca, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

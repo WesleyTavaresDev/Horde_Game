@@ -38,10 +38,11 @@ namespace Enemy.Bat
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-            if(Vector2.Distance(bat.gameObject.transform.position, bat.player.transform.position) > 1.5f)
-                Move(target);
-            else
+            
+            if(Vector2.Distance(bat.gameObject.transform.position, bat.player.transform.position) < 1f)
                 state.ChangeState(bat.attackState);
+            else
+                Move(target);
         }
 
         public override void Exit()

@@ -18,6 +18,7 @@ public class PlayerLifeController : MonoBehaviour
     [SerializeField] private bool invencible;
     [SerializeField] private Collider2D coll;
     private PlayerController player;
+    private float damageTaken;
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class PlayerLifeController : MonoBehaviour
     {
         if(IsAttacked() && !invencible)
         {
-            ApplyDamage(1);
+            ApplyDamage(damageTaken);
         }
     }
 
@@ -39,6 +40,8 @@ public class PlayerLifeController : MonoBehaviour
     {
         life -= damage;
         uiLife?.Invoke(life, player.stats.GetStat(PlayerStatsEnum.healthPoints));
+        damageTaken = 0;
+
         StartCoroutine(ImmuneToDamage());   
 
         if(life > 0)
@@ -54,7 +57,15 @@ public class PlayerLifeController : MonoBehaviour
         invencible = false;
     }
 
-    private bool IsAttacked() => Physics2D.OverlapBox(coll.bounds.center, coll.bounds.size, 0f, dangerMask.value);
+    private bool IsAttacked()
+    {
+        Collider2D enemy = Physics2D.OverlapBox(coll.bounds.center, coll.bounds.size, 0f, dangerMask.value);
+        
+        if(enemy)
+            damageTaken = enemy.gameObject.GetComponent<EnemyController>().enemyStats.GetStat(EnemyStatsEnum.damagePoints);
+        
+        return enemy;
+    }
 
     private void OnDrawGizmos()
     {
