@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStatsInfo : MonoBehaviour
+[System.Serializable]
+public struct EnemyStatsInfo
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   public EnemyStatsEnum statsType;
+   public float value;
 }
