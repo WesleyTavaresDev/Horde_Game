@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class WalkerStateMachine : MonoBehaviour
 {
-    StateMachine walkerSM;
+    private StateMachine walkerSM;
+    [HideInInspector] public IdleState idleState;
     void Start()
     {
         walkerSM = new();
+        
+        idleState = new(this, walkerSM);
+
     }
 
     void Update()
