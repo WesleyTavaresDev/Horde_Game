@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class WalkerStateMachine : MonoBehaviour
 {
-    // Start is called before the first frame update
+    StateMachine walkerSM;
     void Start()
     {
-        
+        walkerSM = new();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        walkerSM.currentState.LogicUpdate();
     }
+
+    void FixedUpdate()
+    {
+        walkerSM.currentState.PhysicsUpdate();
+    }
+
+
 }
