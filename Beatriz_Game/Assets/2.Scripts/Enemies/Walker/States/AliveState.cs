@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class AliveState : State
 {
-    WalkerStateMachine walker;
-    public AliveState(WalkerStateMachine walker, StateMachine state) : base(state) => this.walker = walker; 
+    protected WalkerStateMachine walker;
+    public AliveState(WalkerStateMachine walker, StateMachine state) : base(state) => this.walker = walker;
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+    }
 }
