@@ -4101,11 +4101,14 @@ MonoBehaviour:
   sensorSize: {x: 1.5, y: 1.46}
   reactTime: 1
   idleTime: 2
+  hitTime: 0.8
   attackClip: {fileID: 7400000, guid: 9daddeff573636f9996258cecb8c9e0e, type: 2}
+  life: 0
   walkState: {fileID: 0}
   idleState: {fileID: 0}
   reactState: {fileID: 0}
   attackState: {fileID: 0}
+  hittedState: {fileID: 0}
   anim: {fileID: 0}
   rb: {fileID: 1373460211}
 --- !u!61 &1373460210
@@ -4154,7 +4157,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 5
+  m_Constraints: 4
 --- !u!95 &1373460212
 Animator:
   serializedVersion: 5
