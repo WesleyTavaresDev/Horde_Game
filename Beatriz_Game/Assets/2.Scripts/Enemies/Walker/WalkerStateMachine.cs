@@ -21,7 +21,7 @@ public class WalkerStateMachine : MonoBehaviour
     [HideInInspector] public IdleState idleState;
     [HideInInspector] public ReactState reactState;
     [HideInInspector] public AttackState attackState;
-
+    [HideInInspector] public HittedState hittedState;
     public Animator anim;
     public Rigidbody2D rb;
     private StateMachine walkerSM;

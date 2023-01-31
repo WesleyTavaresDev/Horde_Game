@@ -23,7 +23,7 @@ public class ReactState : AliveState
             state.ChangeState(walker.attackState);
 
         if(!walker.IsPlayerClose())
-            state.ChangeState(walker.idleState);
+            state.ChangeState(walker.walkState);
     }
 
     public override void Exit()
