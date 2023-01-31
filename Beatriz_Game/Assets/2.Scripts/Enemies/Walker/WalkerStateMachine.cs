@@ -4,22 +4,6 @@ using UnityEngine;
 
 public class WalkerStateMachine : MonoBehaviour
 {
-    public float startPosition;
-    public List<float> points = new();
-    public int targetIndex;
-
-    public float speed;
-    public float distanceToWalk;
-
-    public Vector2 sensorSize;
-
-    public float reactTime;
-    public float idleTime;
-    public float hitTime;
-    public Vector2 knockbackForce;
-    public AnimationClip attackClip;
-
-    public float life;
     [HideInInspector] public WalkState walkState;
     [HideInInspector] public IdleState idleState;
     [HideInInspector] public ReactState reactState;
@@ -27,27 +11,44 @@ public class WalkerStateMachine : MonoBehaviour
     [HideInInspector] public HittedState hittedState;
     [HideInInspector] public DeadState deadState;
     
+    [Header("Walk Points", order = 1)]
+    public float startPosition;
+    public List<float> points = new();
+    public int targetIndex;
+    public float distanceToWalk;
+
+    [Header("Movement", order = 2)]
+    public float speed;
+
+    [Header("Player Sensor radius", order = 3)]
+    public Vector2 sensorSize;
+
+    public float idleTime;
+    [Header("Attack", order = 4)]
+    public float reactTime;
+    public float hitTime;
+    public AnimationClip attackClip;
+
+    [Header("Life", order = 5)]
+    public float life;
+    
     private EnemyController enemyController;
     public Animator anim;
     public Rigidbody2D rb;
     private StateMachine walkerSM;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
         enemyController = GetComponent<EnemyController>();
-        
-        life = enemyController.enemyStats.GetStat(EnemyStatsEnum.healthPoints);
-        startPosition = this.gameObject.transform.position.x;
-        
-        points.Add(startPosition + distanceToWalk);
-        
-        points.Add(startPosition);
 
+        life = enemyController.enemyStats.GetStat(EnemyStatsEnum.healthPoints);
+        AddStantardPoints();
 
         walkerSM = new();
-        
+
         idleState = new(this, walkerSM);
         walkState = new(this, walkerSM);
         reactState = new(this, walkerSM);
@@ -56,6 +57,14 @@ public class WalkerStateMachine : MonoBehaviour
         deadState = new(this, walkerSM);
 
         walkerSM.Initialize(walkState);
+    }
+
+    private void AddStantardPoints()
+    {
+        startPosition = this.gameObject.transform.position.x;
+
+        points.Add(startPosition + distanceToWalk);
+        points.Add(startPosition);
     }
 
     void Update()
@@ -77,17 +86,11 @@ public class WalkerStateMachine : MonoBehaviour
         if(other.gameObject.CompareTag("PlayerAttack"))
         {
             SubstractLife(other.GetComponentInParent<Player.PlayerAttackController>().damage);
-            if (IsDead())
-                walkerSM.ChangeState(deadState);
-            else
-                walkerSM.ChangeState(hittedState);
+            walkerSM.ChangeState(IsDead() ? deadState : hittedState);
         }
     }
 
-    private void SubstractLife(float damage)
-    {
-        life -= damage;
-    }
+    private void SubstractLife(float damage) => life -= damage;
 
     private bool IsDead() => life <= 0; 
 
