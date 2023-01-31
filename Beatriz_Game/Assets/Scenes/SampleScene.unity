@@ -4059,7 +4059,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.9166667, y: 1.3333334}
+  m_Size: {x: 1, y: 1.3333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4110,6 +4110,7 @@ MonoBehaviour:
   reactState: {fileID: 0}
   attackState: {fileID: 0}
   hittedState: {fileID: 0}
+  deadState: {fileID: 0}
   anim: {fileID: 0}
   rb: {fileID: 1373460211}
 --- !u!61 &1373460210
@@ -4130,7 +4131,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.9166667, y: 1.3333334}
-    newSize: {x: 0.9166667, y: 1.3333334}
+    newSize: {x: 1, y: 1.3333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -4210,7 +4211,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.9166667, y: 1.3333334}
-    newSize: {x: 0.9166667, y: 1.3333334}
+    newSize: {x: 1, y: 1.3333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
