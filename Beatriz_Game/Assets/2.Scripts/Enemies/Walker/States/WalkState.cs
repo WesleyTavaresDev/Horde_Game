@@ -37,8 +37,7 @@ public class WalkState : AliveState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-                walker.Move(Vector2.right * walker.GetDirection() * walker.speed * Time.deltaTime);
-
+        walker.Move(Vector2.right * walker.GetDirection() * walker.speed * Time.deltaTime);
     }
 
     public override void Exit()
