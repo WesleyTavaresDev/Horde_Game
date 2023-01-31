@@ -80,6 +80,8 @@ public class WalkerStateMachine : MonoBehaviour
     public bool IsPlayerClose() => Physics2D.OverlapBox((new Vector2(rb.worldCenterOfMass.x + (0.5f * GetDirection()).x, rb.worldCenterOfMass.y)), sensorSize, 0, 1 << 6);
 
     public Vector2 GetDirection() => transform.localScale.x >= 0 ? Vector2.right : Vector2.left;
+    
+    public void Move(Vector2 force) => rb.AddForce(force, ForceMode2D.Force);
 
     private void OnTriggerEnter2D(Collider2D other) 
     {
