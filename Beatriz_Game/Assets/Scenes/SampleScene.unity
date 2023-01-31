@@ -4010,13 +4010,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9407e3eb2e7b476c58ea492762408401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: 0, y: 0}
+  startPosition: 0
   points: []
   targetIndex: 0
   speed: 620
   distanceToWalk: 3
   idleTime: 2
-  backToStartPoint: 0
   walkState: {fileID: 0}
   idleState: {fileID: 0}
   anim: {fileID: 0}
