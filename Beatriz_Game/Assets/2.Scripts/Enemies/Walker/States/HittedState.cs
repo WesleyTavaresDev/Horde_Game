@@ -28,6 +28,4 @@ public class HittedState : AliveState
         base.Exit();
         walker.anim.SetBool("Hit", false);
     }
-
-
 }

@@ -16,6 +16,7 @@ public class WalkerStateMachine : MonoBehaviour
     public float reactTime;
     public float idleTime;
     public float hitTime;
+    public Vector2 knockbackForce;
     public AnimationClip attackClip;
 
     public float life;
@@ -24,6 +25,7 @@ public class WalkerStateMachine : MonoBehaviour
     [HideInInspector] public ReactState reactState;
     [HideInInspector] public AttackState attackState;
     [HideInInspector] public HittedState hittedState;
+    [HideInInspector] public DeadState deadState;
     
     private EnemyController enemyController;
     public Animator anim;
@@ -51,6 +53,7 @@ public class WalkerStateMachine : MonoBehaviour
         reactState = new(this, walkerSM);
         attackState = new(this, walkerSM);
         hittedState = new(this, walkerSM);
+        deadState = new(this, walkerSM);
 
         walkerSM.Initialize(walkState);
     }
@@ -74,8 +77,9 @@ public class WalkerStateMachine : MonoBehaviour
         if(other.gameObject.CompareTag("PlayerAttack"))
         {
             SubstractLife(other.GetComponentInParent<Player.PlayerAttackController>().damage);
-
-            if(!IsDead())
+            if (IsDead())
+                walkerSM.ChangeState(deadState);
+            else
                 walkerSM.ChangeState(hittedState);
         }
     }

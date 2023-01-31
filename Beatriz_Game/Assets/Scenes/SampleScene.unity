@@ -4102,6 +4102,7 @@ MonoBehaviour:
   reactTime: 1
   idleTime: 2
   hitTime: 0.8
+  knockbackForce: {x: 1000, y: 50}
   attackClip: {fileID: 7400000, guid: 9daddeff573636f9996258cecb8c9e0e, type: 2}
   life: 0
   walkState: {fileID: 0}
