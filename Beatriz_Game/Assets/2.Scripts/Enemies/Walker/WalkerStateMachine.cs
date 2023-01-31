@@ -12,8 +12,11 @@ public class WalkerStateMachine : MonoBehaviour
     public float distanceToWalk;
 
     public Vector2 sensorSize;
+
     public float reactTime;
     public float idleTime;
+    public AnimationClip attackClip;
+
     [HideInInspector] public WalkState walkState;
     [HideInInspector] public IdleState idleState;
     [HideInInspector] public ReactState reactState;
@@ -40,7 +43,7 @@ public class WalkerStateMachine : MonoBehaviour
         walkState = new(this, walkerSM);
         reactState = new(this, walkerSM);
         attackState = new(this, walkerSM);
-        
+
         walkerSM.Initialize(walkState);
     }
 
