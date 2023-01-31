@@ -17,6 +17,7 @@ public class WalkerStateMachine : MonoBehaviour
     [HideInInspector] public WalkState walkState;
     [HideInInspector] public IdleState idleState;
     [HideInInspector] public ReactState reactState;
+    [HideInInspector] public AttackState attackState;
 
     public Animator anim;
     public Rigidbody2D rb;
@@ -38,7 +39,8 @@ public class WalkerStateMachine : MonoBehaviour
         idleState = new(this, walkerSM);
         walkState = new(this, walkerSM);
         reactState = new(this, walkerSM);
-
+        attackState = new(this, walkerSM);
+        
         walkerSM.Initialize(walkState);
     }
 
