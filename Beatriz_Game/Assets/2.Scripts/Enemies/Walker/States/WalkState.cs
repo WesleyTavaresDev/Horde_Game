@@ -21,11 +21,17 @@ public class WalkState : AliveState
     {
         base.LogicUpdate();
 
-        float distance = Mathf.Abs(walker.points[walker.targetIndex] - walker.gameObject.transform.position.x);
-        Debug.Log(distance);
+        float distanceDestination = (walker.points[walker.targetIndex] - walker.gameObject.transform.position.x);
+        Debug.Log(distanceDestination);
 
-        if(distance <= 0.1f)
-            state.ChangeState(walker.idleState);
+        if(walker.targetIndex == 0)
+        {
+            if(distanceDestination <= 0.1f)
+                state.ChangeState(walker.idleState);
+        }
+        else if( walker.targetIndex == 1)
+            if(distanceDestination > 0)
+                state.ChangeState(walker.idleState);
     }
 
     public override void PhysicsUpdate()
@@ -39,5 +45,6 @@ public class WalkState : AliveState
         base.Exit();
         walker.rb.velocity -= walker.rb.velocity;
         walker.anim.SetBool("Walking", false);
+
     }
 }

@@ -62,8 +62,18 @@ public class PlayerLifeController : MonoBehaviour
         Collider2D enemy = Physics2D.OverlapBox(coll.bounds.center, coll.bounds.size, 0f, dangerMask.value);
         
         if(enemy)
-            damageTaken = enemy.gameObject.GetComponent<EnemyController>().enemyStats.GetStat(EnemyStatsEnum.damagePoints);
-        
+        {
+           if(enemy.gameObject.TryGetComponent(out EnemyController status))
+           {
+                damageTaken = status.enemyStats.GetStat(EnemyStatsEnum.damagePoints);  
+           }
+           else if(enemy.gameObject.GetComponentInParent<EnemyController>() != null)
+           {
+                damageTaken = enemy.gameObject.GetComponentInParent<EnemyController>().enemyStats.GetStat(EnemyStatsEnum.damagePoints);
+           }
+
+         
+        }
         return enemy;
     }
 
