@@ -20,17 +20,24 @@ public class WalkState : AliveState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        float distance = Mathf.Abs(walker.points[walker.targetIndex] - walker.gameObject.transform.position.x);
+        Debug.Log(distance);
+
+        if(distance <= 0.1f)
+            state.ChangeState(walker.idleState);
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-        if(walker.DistanceFromStartPosition() < walker.distanceToWalk)
-            walker.rb.AddForce(Vector2.right * walker.speed * Time.deltaTime, ForceMode2D.Force);
+        walker.rb.AddForce(Vector2.right * walker.GetDirection() * walker.speed * Time.deltaTime, ForceMode2D.Force);
     }
 
     public override void Exit()
     {
         base.Exit();
+        walker.rb.velocity -= walker.rb.velocity;
+        walker.anim.SetBool("Walking", false);
     }
 }

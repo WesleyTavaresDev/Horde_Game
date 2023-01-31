@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class WalkerStateMachine : MonoBehaviour
 {
-    public Vector2 startPosition;
+    public float startPosition;
+
+    public List<float> points = new();
+    public int targetIndex;
+
     public float speed;
     public float distanceToWalk;
+
+    public float idleTime;
     [HideInInspector] public WalkState walkState;
     [HideInInspector] public IdleState idleState;
 
@@ -17,7 +23,13 @@ public class WalkerStateMachine : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        startPosition = this.gameObject.transform.position;
+
+        startPosition = this.gameObject.transform.position.x;
+        
+        points.Add(startPosition + distanceToWalk);
+        
+        points.Add(startPosition);
+
 
         walkerSM = new();
         
@@ -30,7 +42,6 @@ public class WalkerStateMachine : MonoBehaviour
     void Update()
     {
         walkerSM.currentState.LogicUpdate();
-        Debug.Log(DistanceFromStartPosition());
     }
 
     void FixedUpdate()
@@ -38,11 +49,5 @@ public class WalkerStateMachine : MonoBehaviour
         walkerSM.currentState.PhysicsUpdate();
     }
 
-    public float DistanceFromStartPosition() => Mathf.Abs(startPosition.x - this.gameObject.transform.position.x);
-
-    private void OnDrawGizmos() 
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(startPosition, this.transform.position);     
-    }
+    public Vector2 GetDirection() => transform.localScale.x >= 0 ? Vector2.right : Vector2.left;
 }
