@@ -2,17 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReactState : MonoBehaviour
+public class ReactState : AliveState
 {
-    // Start is called before the first frame update
-    void Start()
+    private float timeInReact;
+    public ReactState(WalkerStateMachine walker, StateMachine state) : base(walker, state) {}
+
+    public override void Enter()
     {
-        
+        base.Enter();
+        timeInReact = walker.reactTime;
+        walker.anim.SetBool("React", true);
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void LogicUpdate()
     {
-        
+        base.LogicUpdate();
+
+        timeInReact -= Time.deltaTime;
+
+        if(timeInReact <= 0)
+            Debug.Log("Attack");
+
+        if(!walker.IsPlayerClose())
+            state.ChangeState(walker.idleState);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        walker.anim.SetBool("React", false);
     }
 }

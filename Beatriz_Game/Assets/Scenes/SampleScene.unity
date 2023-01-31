@@ -4015,11 +4015,13 @@ MonoBehaviour:
   targetIndex: 0
   speed: 620
   distanceToWalk: 3
+  sensorSize: {x: 1.7, y: 1.46}
   idleTime: 2
   walkState: {fileID: 0}
   idleState: {fileID: 0}
+  reactState: {fileID: 0}
   anim: {fileID: 0}
-  rb: {fileID: 0}
+  rb: {fileID: 1373460211}
 --- !u!61 &1373460210
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4037,7 +4039,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.9166667, y: 1.3333334}
+    oldSize: {x: 1.6666666, y: 1.5}
     newSize: {x: 0.9166667, y: 1.3333334}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

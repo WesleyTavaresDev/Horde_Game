@@ -15,5 +15,15 @@ public class AliveState : State
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        if(walker.IsPlayerClose())
+        {
+            state.ChangeState(walker.reactState);
+        }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
     }
 }
