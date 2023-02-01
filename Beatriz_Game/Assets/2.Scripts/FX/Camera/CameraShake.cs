@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform cameraPosition;
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator Shake(float duration, float magnitude)
     {
-        
+        Vector3 origin = this.gameObject.transform.position;
+
+        float time = 0f;
+
+        while(time < duration )
+        {
+            cameraPosition.position = new Vector3(origin.x + Random.insideUnitCircle.x * magnitude, origin.y + Random.insideUnitCircle.y * magnitude, -10); 
+            time += Time.deltaTime;
+
+            yield return null;
+        }
+
+        cameraPosition.position = new Vector3(0, 0, -10);
     }
 }
