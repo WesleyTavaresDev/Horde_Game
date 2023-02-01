@@ -17,6 +17,7 @@ public class PlayerLifeController : MonoBehaviour
     [SerializeField] private float life;
     [SerializeField] private bool invencible;
     [SerializeField] private Collider2D coll;
+    public CameraShake cameraShake;
     private PlayerController player;
     private float damageTaken;
 
@@ -33,6 +34,7 @@ public class PlayerLifeController : MonoBehaviour
         if(IsAttacked() && !invencible)
         {
             ApplyDamage(damageTaken);
+            StartCoroutine(cameraShake.Shake(0.1f, 0.1f));
         }
     }
 
@@ -64,15 +66,9 @@ public class PlayerLifeController : MonoBehaviour
         if(enemy)
         {
            if(enemy.gameObject.TryGetComponent(out EnemyController status))
-           {
                 damageTaken = status.enemyStats.GetStat(EnemyStatsEnum.damagePoints);  
-           }
            else if(enemy.gameObject.GetComponentInParent<EnemyController>() != null)
-           {
                 damageTaken = enemy.gameObject.GetComponentInParent<EnemyController>().enemyStats.GetStat(EnemyStatsEnum.damagePoints);
-           }
-
-         
         }
         return enemy;
     }
