@@ -5,6 +5,7 @@ using UnityEngine;
 public class HordeLevel : MonoBehaviour
 {
     [SerializeField] private List<SpawnableAttributes> enemies = new();
+
     public void Init()
     {
         Debug.Log("Horde started");
@@ -18,7 +19,7 @@ public class HordeLevel : MonoBehaviour
         { 
             for(int j = 0; j < enemies[i].quantity; j++)
             {
-                Instantiate(enemies[i].enemy, Vector3.zero, Quaternion.identity);
+                Instantiate(enemies[i].enemy, enemies[i].spawnerArea.GetRandomPosition(), Quaternion.identity);
             }
         }
     }

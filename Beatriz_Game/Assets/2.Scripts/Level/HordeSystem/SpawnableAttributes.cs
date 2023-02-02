@@ -7,4 +7,6 @@ public struct SpawnableAttributes
 {
     public GameObject enemy;
     public uint quantity;
+    public SpawnerArea spawnerArea;
 }
+
