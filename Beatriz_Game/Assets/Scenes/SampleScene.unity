@@ -6401,10 +6401,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89434765bcef6789fa125ba59065fd4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - enemy: {fileID: 5086423305679534616, guid: 34697d62f71ef4367a028ed6f88fadfb, type: 3}
-    quantity: 2
-    spawnerArea: {fileID: 989160081}
+  horders: 0
+  currentHorde: 0
+  hordes:
+  - enemies:
+    - enemy: {fileID: 5086423305679534616, guid: 34697d62f71ef4367a028ed6f88fadfb, type: 3}
+      quantity: 2
+      spawnerArea: {fileID: 989160081}
   quantityOfEnemies: 0
 --- !u!114 &1763737956
 MonoBehaviour:

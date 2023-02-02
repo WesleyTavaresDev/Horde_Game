@@ -11,9 +11,12 @@ public class DeadState : State
     {
         base.Enter();
         walker.OnKill();
+        
         walker.anim.SetBool("Dead", true);
         walker.rb.bodyType = RigidbodyType2D.Static;
+        
         Collider2D[] collidersToBeDisabled = walker.gameObject.GetComponents<BoxCollider2D>();
+
         for(int i = 0; i < collidersToBeDisabled.Length; i++)
             collidersToBeDisabled[i].enabled = false;
     }
