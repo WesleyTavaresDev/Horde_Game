@@ -9,7 +9,11 @@ public class LevelManager : MonoBehaviour
     
     void Start()
     {
-        
+        switch(levelType)
+        {
+            case LevelType.Horde:
+            break;
+        }
     }
 
     void Update()
