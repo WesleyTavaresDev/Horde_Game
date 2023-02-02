@@ -6,10 +6,10 @@ public class HordeLevel : MonoBehaviour
 {
     [SerializeField] private List<SpawnableAttributes> enemies = new();
 
+    [SerializeField] private uint quantityOfEnemies;
+
     public void Init()
     {
-        Debug.Log("Horde started");
-
         InstantiateEnemies();
     }
 
@@ -20,7 +20,10 @@ public class HordeLevel : MonoBehaviour
             for(int j = 0; j < enemies[i].quantity; j++)
             {
                 Instantiate(enemies[i].enemy, enemies[i].spawnerArea.GetRandomPosition(), Quaternion.identity);
+                quantityOfEnemies++;
             }
         }
     }
+
+    public void DecreaseQuantityOfEnemies() => quantityOfEnemies--;
 }
