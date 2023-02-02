@@ -9,6 +9,7 @@ public class WalkState : AliveState
     public override void Enter()
     {
         base.Enter();
+        walker.anim.SetBool("Walking", true);
     }
 
     public override void HandleInput()
