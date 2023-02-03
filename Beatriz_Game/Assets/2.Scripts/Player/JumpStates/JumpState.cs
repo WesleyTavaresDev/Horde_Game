@@ -33,7 +33,7 @@ namespace Player
             jumpController = GetComponent<PlayerJumpController>();
             playerAttackController = GetComponent<PlayerAttackController>();
 
-            JumpInput().performed += OnJumpPerformed;
+            JumpInput().started += OnJumpPerformed;
         }
             
 

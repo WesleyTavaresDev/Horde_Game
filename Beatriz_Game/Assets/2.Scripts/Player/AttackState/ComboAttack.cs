@@ -20,6 +20,8 @@ namespace Player
             player.damage = player.playerController.stats.GetStat(PlayerStatsEnum.comboAttackDamage);
             player.anim.SetBool("AttackCombo", true);
             comboTime = player.playerController.stats.comboAttackClip.length;
+
+            player.comboAttack?.Invoke();
         }
 
         public override void LogicUpdate()

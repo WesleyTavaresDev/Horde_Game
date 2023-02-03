@@ -24,6 +24,8 @@ public class Attack : State
         attackTime = player.playerController.stats.attackClip.length;
         combo = false;
         player.attacking = true;
+
+        player.basicAttack?.Invoke();
     }
 
     public override void HandleInput()
