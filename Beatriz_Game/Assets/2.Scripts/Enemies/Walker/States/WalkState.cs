@@ -31,6 +31,8 @@ public class WalkState : AliveState
         else if( walker.targetIndex == 1)
             if(distanceDestination > 0)
                 state.ChangeState(walker.idleState);
+        else if( walker.HitWall())
+            state.ChangeState(walker.idleState);
     }
 
     public override void PhysicsUpdate()

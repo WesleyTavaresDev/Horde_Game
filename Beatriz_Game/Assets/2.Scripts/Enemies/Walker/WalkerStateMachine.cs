@@ -88,7 +88,13 @@ public class WalkerStateMachine : Spawnable
 
     public void Move(Vector2 force) => rb.AddForce(force, ForceMode2D.Force);
 
-   
+    public bool HitWall() 
+    {
+        var ray = Physics2D.Raycast(new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1), GetDirection(), 1f, 1 << 7);
+        Debug.DrawRay(new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1), GetDirection() * 1f, Color.yellow);
+        return ray.collider != null;
+    }
+    
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.CompareTag("PlayerAttack"))

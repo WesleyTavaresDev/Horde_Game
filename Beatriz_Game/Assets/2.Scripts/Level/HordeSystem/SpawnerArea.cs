@@ -7,7 +7,7 @@ public class SpawnerArea : MonoBehaviour
     
     public Vector2 GetRandomPosition() => new(GetRandomPoint(), this.gameObject.transform.position.y);
 
-    public float GetRandomPoint() => Random.Range(this.transform.position.x, calculateLength()) + Random.Range(0.1f, 1f);
+    public float GetRandomPoint() => Random.Range(this.transform.position.x, calculateLength());
     
     private void OnDrawGizmos() {
         Gizmos.color = Color.green;

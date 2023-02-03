@@ -447,9 +447,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b394a8149a0867d977f3d98b7f8925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockbackForce: {x: 250, y: 200}
   dangerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   life: 0
   invencible: 0
   coll: {fileID: 45802370}
@@ -4102,7 +4103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f69809da817fc26798a1961179e3f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vectorLength: -1.35
+  vectorLength: -1.76
 --- !u!4 &989160082
 Transform:
   m_ObjectHideFlags: 0
