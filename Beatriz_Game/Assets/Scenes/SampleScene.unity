@@ -6408,6 +6408,10 @@ MonoBehaviour:
     - enemy: {fileID: 5086423305679534616, guid: 34697d62f71ef4367a028ed6f88fadfb, type: 3}
       quantity: 2
       spawnerArea: {fileID: 989160081}
+  - enemies:
+    - enemy: {fileID: 5086423305679534616, guid: 34697d62f71ef4367a028ed6f88fadfb, type: 3}
+      quantity: 3
+      spawnerArea: {fileID: 989160081}
   quantityOfEnemies: 0
 --- !u!114 &1763737956
 MonoBehaviour:

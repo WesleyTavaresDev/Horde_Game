@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HordeLevel : MonoBehaviour
 {
-    [SerializeField] private uint horders;
+    [SerializeField] private int horders;
     [SerializeField] private int currentHorde;
     [SerializeField] private List<Horde> hordes = new();
     
@@ -13,6 +13,7 @@ public class HordeLevel : MonoBehaviour
     public void Init()
     {
         InstantiateEnemies();
+        horders = hordes.Count;
     }
 
     void InstantiateEnemies()
@@ -31,8 +32,15 @@ public class HordeLevel : MonoBehaviour
     {
         if(quantityOfEnemies <= 0)
         {
-            if(horders > 0)
+            if(currentHorde >= horders)
             {
+                Debug.Log("There's no more horders");
+            }
+
+            else
+            {
+                currentHorde++;
+                Init();
             }
         }
     }
