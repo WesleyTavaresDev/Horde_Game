@@ -31,6 +31,7 @@ public class WalkerStateMachine : Spawnable
 
     [Header("Life", order = 5)]
     public float life;
+    public PlayerAttackEffect hitEffect;
     
     private EnemyController enemyController;
     public Animator anim;
@@ -100,9 +101,17 @@ public class WalkerStateMachine : Spawnable
         if(other.gameObject.CompareTag("PlayerAttack"))
         {
             SubstractLife(other.GetComponentInParent<Player.PlayerAttackController>().damage);
-       
+            HittedEffect();
             walkerSM.ChangeState(IsDead() ? deadState : hittedState);
         }
+    }
+
+    private void HittedEffect()
+    {
+        GameObject effect = 
+            Instantiate(hitEffect.gameObject, new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 0.5f), Quaternion.identity) as GameObject;
+        effect.transform.SetParent(this.gameObject.transform);
+        effect.GetComponent<PlayerAttackEffect>().Run();
     }
 
     private void SubstractLife(float damage) => life -= damage;

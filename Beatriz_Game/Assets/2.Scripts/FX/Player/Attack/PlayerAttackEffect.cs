@@ -11,6 +11,8 @@ public class PlayerAttackEffect : MonoBehaviour
     }   
     public void Run()
     {
+        if(anim is null)
+            anim = GetComponent<Animator>();
         anim.SetTrigger("Run");
     }
 
