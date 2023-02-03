@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PlayerAttackEffect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private AnimationClip effectAnim;
+    Animator anim;
+    private void Start() {
+        anim = GetComponent<Animator>();
+    }   
+    public void Run()
     {
-        
+        anim.SetTrigger("Run");
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator Stop()
     {
-        
+        yield return new WaitForSeconds(effectAnim.length);
     }
+
 }
+
