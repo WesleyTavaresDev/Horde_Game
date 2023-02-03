@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackEffect : MonoBehaviour
+public class Effect : MonoBehaviour
 {
     [SerializeField] private AnimationClip effectAnim;
     Animator anim;

@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerHit : MonoBehaviour
 {
-    [SerializeField] private float knockbackForce;
     private readonly int hit = Animator.StringToHash("Hitted");
 
     private Animator anim;

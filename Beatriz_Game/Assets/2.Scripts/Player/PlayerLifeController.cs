@@ -18,7 +18,6 @@ public class PlayerLifeController : MonoBehaviour
     [SerializeField] private float life;
     [SerializeField] private bool invencible;
     [SerializeField] private Collider2D coll;
-    public CameraShake cameraShake;
     private PlayerController player;
     private Rigidbody2D rb;
     private float damageTaken;
@@ -37,12 +36,12 @@ public class PlayerLifeController : MonoBehaviour
         if(IsAttacked() && !invencible)
         {
             ApplyDamage(damageTaken);
-            StartCoroutine(cameraShake.Shake(0.1f, 0.1f));
+            StartCoroutine(CameraShake.instance.Shake(0.1f, 0.1f));
         }
     }
 
     private void FixedUpdate() {
-        if(IsAttacked())
+        if(IsAttacked() && !invencible)
             Knockback();
     }
 

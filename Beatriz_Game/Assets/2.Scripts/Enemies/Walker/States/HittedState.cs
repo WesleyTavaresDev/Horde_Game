@@ -12,6 +12,7 @@ public class HittedState : AliveState
         base.Enter();
         walker.anim.SetBool("Hit", true);
         timeInHit = walker.hitTime;
+        walker.StartCoroutine(CameraShake.instance.Shake(0.1f, 0.1f));
     }
 
     public override void LogicUpdate()

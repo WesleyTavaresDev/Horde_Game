@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+    public static CameraShake instance;
     public Transform cameraPosition;
+
+    private void Start() {
+        if(instance is null)
+            instance = this;
+        else
+            Destroy(gameObject);
+    }
 
     public IEnumerator Shake(float duration, float magnitude)
     {
