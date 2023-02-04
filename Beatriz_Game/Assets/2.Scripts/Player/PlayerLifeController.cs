@@ -75,7 +75,7 @@ public class PlayerLifeController : MonoBehaviour
 
     private bool IsAttacked()
     {
-        Collider2D enemy = Physics2D.OverlapBox(coll.bounds.center,  new Vector2(coll.bounds.size.x + 0.5f, coll.bounds.size.y), 0f, dangerMask.value);
+        Collider2D enemy = Physics2D.OverlapBox(coll.bounds.center,  new Vector2(coll.bounds.size.x + 0.02f, coll.bounds.size.y), 0f, dangerMask.value);
         
         if(enemy)
         {
@@ -91,6 +91,6 @@ public class PlayerLifeController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;    
 
-        Gizmos.DrawWireCube(coll.bounds.center, new Vector2(coll.bounds.size.x + 0.5f, coll.bounds.size.y));
+        Gizmos.DrawWireCube(coll.bounds.center, new Vector2(coll.bounds.size.x + 0.02f, coll.bounds.size.y));
     }
 }

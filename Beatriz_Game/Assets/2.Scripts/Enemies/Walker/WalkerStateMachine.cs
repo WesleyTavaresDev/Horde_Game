@@ -101,7 +101,8 @@ public class WalkerStateMachine : Spawnable
         if(other.gameObject.CompareTag("PlayerAttack"))
         {
             SubstractLife(other.GetComponentInParent<Player.PlayerAttackController>().damage);
-            HittedEffect();
+            if(hitEffect != null)
+                HittedEffect();
             walkerSM.ChangeState(IsDead() ? deadState : hittedState);
         }
     }

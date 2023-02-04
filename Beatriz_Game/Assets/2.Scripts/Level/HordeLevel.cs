@@ -10,10 +10,13 @@ public class HordeLevel : MonoBehaviour
     
     [SerializeField] private uint quantityOfEnemies;
     [SerializeField] private Effect spawnEffect;
+    [SerializeField] private Animator blockerHordeAnim;
 
     public void Init()
     {
         InstantiateEnemies();
+        StartCoroutine(CameraShake.instance.Shake(0.2f, 0.1f));
+        blockerHordeAnim.SetTrigger("Start");
         horders = hordes.Count;
     }
 
@@ -28,18 +31,22 @@ public class HordeLevel : MonoBehaviour
                 effect.GetComponent<Effect>().Run();
                 
                 Instantiate(hordes[currentHorde].enemies[i].enemy, randomPos, Quaternion.identity);
-                quantityOfEnemies++;
+                quantityOfEnemies ++;
             }
         }
     }
 
-    private void Update()
+    private void CheckIfIsHorderCompleted()
     {
-        if(quantityOfEnemies <= 0)
+        if (quantityOfEnemies <= 0)
         {
-            if(currentHorde >= horders)
+            if (currentHorde >= horders)
             {
-                Debug.Log("There's no more horders");
+                if(blockerHordeAnim != null) 
+                {
+                    blockerHordeAnim.SetBool("End", true);
+                    Destroy(blockerHordeAnim.gameObject, 0.7f);
+                }
             }
 
             else
@@ -50,5 +57,14 @@ public class HordeLevel : MonoBehaviour
         }
     }
 
-    public void DecreaseQuantityOfEnemies() => quantityOfEnemies--;
+    public void DecreaseQuantityOfEnemies() 
+    {
+        quantityOfEnemies--;
+    } 
+        
+
+    private void Update() 
+    {
+        CheckIfIsHorderCompleted();    
+    }
 }
