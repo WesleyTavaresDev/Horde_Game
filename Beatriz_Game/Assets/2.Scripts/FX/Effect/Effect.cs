@@ -15,11 +15,5 @@ public class Effect : MonoBehaviour
             anim = GetComponent<Animator>();
         anim.SetTrigger("Run");
     }
-
-    public IEnumerator Stop()
-    {
-        yield return new WaitForSeconds(effectAnim.length);
-    }
-
 }
 

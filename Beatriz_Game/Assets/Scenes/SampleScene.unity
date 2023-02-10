@@ -5879,7 +5879,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 10
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5889,7 +5889,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5949,7 +5949,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 7
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5959,7 +5959,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 5
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6102,20 +6102,20 @@ Tilemap:
     m_Data: {fileID: -1323556341, guid: 4b9c3df4e0c0795f3888baf8fc4e04be, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -54696946, guid: 4b9c3df4e0c0795f3888baf8fc4e04be, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1323097094, guid: 4b9c3df4e0c0795f3888baf8fc4e04be, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 101333963, guid: 4b9c3df4e0c0795f3888baf8fc4e04be, type: 3}
   - m_RefCount: 15
     m_Data: {fileID: -1395742212, guid: 4b9c3df4e0c0795f3888baf8fc4e04be, type: 3}
   - m_RefCount: 17
     m_Data: {fileID: 157285805, guid: 4b9c3df4e0c0795f3888baf8fc4e04be, type: 3}
   - m_RefCount: 1
+    m_Data: {fileID: 101333963, guid: 4b9c3df4e0c0795f3888baf8fc4e04be, type: 3}
+  - m_RefCount: 1
     m_Data: {fileID: -1175026287, guid: 4b9c3df4e0c0795f3888baf8fc4e04be, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: -1736915575, guid: 4b9c3df4e0c0795f3888baf8fc4e04be, type: 3}
   - m_RefCount: 1
@@ -8525,7 +8525,7 @@ SpriteRenderer:
   m_Size: {x: 4.8, y: 2.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1989556856
