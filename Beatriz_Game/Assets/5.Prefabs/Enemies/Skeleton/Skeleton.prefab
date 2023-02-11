@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9407e3eb2e7b476c58ea492762408401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hordeLevel: {fileID: 0}
   walkState: {fileID: 0}
   idleState: {fileID: 0}
   reactState: {fileID: 0}
@@ -116,10 +117,11 @@ MonoBehaviour:
   speed: 250
   sensorSize: {x: 1.5, y: 1.46}
   idleTime: 2
-  reactTime: 0.5
-  hitTime: 1
+  reactTime: 0.2
+  hitTime: 0.7
   attackClip: {fileID: 7400000, guid: 9daddeff573636f9996258cecb8c9e0e, type: 2}
   life: 0
+  hitEffect: {fileID: 729353847, guid: b461dc9d4b33bfeb7b7c7a25c976a493, type: 3}
   anim: {fileID: 0}
   rb: {fileID: 5086423305679534597}
 --- !u!61 &5086423305679534596

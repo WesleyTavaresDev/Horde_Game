@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 namespace Player 
 { 
     public class PlayerAttackController : MonoBehaviour
     {
+        public UnityEvent basicAttack;
+        public UnityEvent comboAttack;
         #region States and Components
         [HideInInspector] public StateMachine playerSM;
         [HideInInspector] public Attack attackState;

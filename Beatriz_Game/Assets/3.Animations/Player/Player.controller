@@ -275,9 +275,6 @@ AnimatorStateTransition:
     m_ConditionEvent: AttackCombo
     m_EventTreshold: 0
   - m_ConditionMode: 2
-    m_ConditionEvent: Fall
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
     m_ConditionEvent: Land
     m_EventTreshold: 0
   - m_ConditionMode: 2

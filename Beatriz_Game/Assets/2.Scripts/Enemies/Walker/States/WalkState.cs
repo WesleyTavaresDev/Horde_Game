@@ -22,7 +22,6 @@ public class WalkState : AliveState
         base.LogicUpdate();
 
         float distanceDestination = (walker.points[walker.targetIndex] - walker.gameObject.transform.position.x);
-        Debug.Log(distanceDestination);
 
         if(walker.targetIndex == 0)
         {
@@ -32,6 +31,8 @@ public class WalkState : AliveState
         else if( walker.targetIndex == 1)
             if(distanceDestination > 0)
                 state.ChangeState(walker.idleState);
+        else if( walker.HitWall())
+            state.ChangeState(walker.idleState);
     }
 
     public override void PhysicsUpdate()

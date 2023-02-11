@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkerStateMachine : MonoBehaviour
+public class WalkerStateMachine : Spawnable
 {
     [HideInInspector] public WalkState walkState;
     [HideInInspector] public IdleState idleState;
@@ -31,14 +31,16 @@ public class WalkerStateMachine : MonoBehaviour
 
     [Header("Life", order = 5)]
     public float life;
+    public Effect hitEffect;
     
     private EnemyController enemyController;
     public Animator anim;
     public Rigidbody2D rb;
     private StateMachine walkerSM;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
@@ -57,6 +59,10 @@ public class WalkerStateMachine : MonoBehaviour
         deadState = new(this, walkerSM);
 
         walkerSM.Initialize(walkState);
+    }
+    public override void OnKill()
+    {
+        base.OnKill();
     }
 
     private void AddStantardPoints()
@@ -83,15 +89,30 @@ public class WalkerStateMachine : MonoBehaviour
 
     public void Move(Vector2 force) => rb.AddForce(force, ForceMode2D.Force);
 
-   
+    public bool HitWall() 
+    {
+        var ray = Physics2D.Raycast(new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1), GetDirection(), 1f, 1 << 7);
+        Debug.DrawRay(new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 1), GetDirection() * 1f, Color.yellow);
+        return ray.collider != null;
+    }
+    
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if(other.gameObject.CompareTag("PlayerAttack"))
         {
             SubstractLife(other.GetComponentInParent<Player.PlayerAttackController>().damage);
-       
+            if(hitEffect != null)
+                HittedEffect();
             walkerSM.ChangeState(IsDead() ? deadState : hittedState);
         }
+    }
+
+    private void HittedEffect()
+    {
+        GameObject effect = 
+            Instantiate(hitEffect.gameObject, new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 0.5f), Quaternion.identity) as GameObject;
+        effect.transform.SetParent(this.gameObject.transform);
+        effect.GetComponent<Effect>().Run();
     }
 
     private void SubstractLife(float damage) => life -= damage;

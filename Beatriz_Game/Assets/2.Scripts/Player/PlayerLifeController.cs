@@ -13,18 +13,20 @@ public class PlayerLifeController : MonoBehaviour
     public delegate void UiLife(float lifePoints, float maxLifePoints);
     public static event UiLife uiLife; 
 
+    [SerializeField] private Vector2 knockbackForce;
     [SerializeField] private LayerMask dangerMask;
     [SerializeField] private float life;
     [SerializeField] private bool invencible;
     [SerializeField] private Collider2D coll;
-    public CameraShake cameraShake;
     private PlayerController player;
+    private Rigidbody2D rb;
     private float damageTaken;
 
     void Start()
     {
         player = GetComponent<PlayerController>();
         coll = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
 
         life = player.stats.GetStat(PlayerStatsEnum.healthPoints);
     }
@@ -34,8 +36,20 @@ public class PlayerLifeController : MonoBehaviour
         if(IsAttacked() && !invencible)
         {
             ApplyDamage(damageTaken);
-            StartCoroutine(cameraShake.Shake(0.1f, 0.1f));
+            StartCoroutine(CameraShake.instance.Shake(0.1f, 0.1f));
         }
+    }
+
+    private void FixedUpdate() {
+        if(IsAttacked() && !invencible)
+            Knockback();
+    }
+
+    private void Knockback() 
+    {
+        int direction = transform.localEulerAngles.y == 0 ? -1 : 1;
+        rb.velocity = Vector2.zero;
+        rb.AddForce(new Vector2(direction * knockbackForce.x * Time.deltaTime, knockbackForce.y * Time.deltaTime), ForceMode2D.Impulse);
     }
 
     private void ApplyDamage(float damage)
@@ -61,7 +75,7 @@ public class PlayerLifeController : MonoBehaviour
 
     private bool IsAttacked()
     {
-        Collider2D enemy = Physics2D.OverlapBox(coll.bounds.center, coll.bounds.size, 0f, dangerMask.value);
+        Collider2D enemy = Physics2D.OverlapBox(coll.bounds.center,  new Vector2(coll.bounds.size.x + 0.02f, coll.bounds.size.y), 0f, dangerMask.value);
         
         if(enemy)
         {
@@ -77,6 +91,6 @@ public class PlayerLifeController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;    
 
-        Gizmos.DrawWireCube(coll.bounds.center, coll.bounds.size);
+        Gizmos.DrawWireCube(coll.bounds.center, new Vector2(coll.bounds.size.x + 0.02f, coll.bounds.size.y));
     }
 }

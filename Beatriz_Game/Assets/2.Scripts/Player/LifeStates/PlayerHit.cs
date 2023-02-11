@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerHit : MonoBehaviour
 {
-    [SerializeField] private float knockbackForce;
     private readonly int hit = Animator.StringToHash("Hitted");
 
     private Animator anim;
@@ -24,7 +23,6 @@ public class PlayerHit : MonoBehaviour
     private void Hit()
     {
         StartCoroutine(OnHit());
-        Knockback();
     } 
 
     private IEnumerator OnHit()
@@ -32,12 +30,6 @@ public class PlayerHit : MonoBehaviour
         anim.SetBool(hit, true);    
         yield return new WaitForSeconds(player.stats.GetStat(PlayerStatsEnum.hitTime));
         anim.SetBool(hit, false);
-    }
-
-    private void Knockback() 
-    {
-        int direction = transform.localEulerAngles.y == 0 ? -1 : 1;
-        rb.AddForce(new Vector2(direction * knockbackForce * Time.deltaTime, 1 * knockbackForce * Time.deltaTime), ForceMode2D.Impulse);
     }
 
     public bool IsHitting() => anim.GetBool(hit);
