@@ -20,7 +20,7 @@ public class HordeLevel : MonoBehaviour
     {
         InstantiateEnemies();
         StartCoroutine(CameraShake.instance.Shake(0.2f, 0.1f));
-        blockerHordeAnim.SetTrigger("Start");
+        InitEffects?.Invoke();
         maxOfHorder = hordes.Count;
     }
 
@@ -45,14 +45,7 @@ public class HordeLevel : MonoBehaviour
         if (quantityOfEnemies <= 0)
         {
             if (currentHorde >= maxOfHorder)
-            {
-                if(blockerHordeAnim != null) 
-                {
-                    blockerHordeAnim.SetBool("End", true);
-                    Destroy(blockerHordeAnim.gameObject, 0.7f);
-                }
-            }
-
+                finish?.Invoke();
             else
             {
                 currentHorde++;

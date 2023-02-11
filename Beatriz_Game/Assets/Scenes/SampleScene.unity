@@ -1847,6 +1847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2768f54a20c987319a9fea6eeb2b61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runAnimation: 
+  stopAnimation: 
   effectAnim: {fileID: 7400000, guid: 51c05a5ab5c17bbb78c46eaf3344153e, type: 2}
 --- !u!1 &365375972
 GameObject:
@@ -6609,7 +6611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89434765bcef6789fa125ba59065fd4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horders: 0
+  maxOfHorder: 0
   currentHorde: 0
   hordes:
   - enemies:
@@ -6623,6 +6625,36 @@ MonoBehaviour:
   quantityOfEnemies: 0
   spawnEffect: {fileID: 8192576537779956873, guid: 995f5ab55bca1a683bf9b026dd108249, type: 3}
   blockerHordeAnim: {fileID: 749294283}
+  InitEffects:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2362276043253194716}
+        m_TargetAssemblyTypeName: Effect, Assembly-CSharp
+        m_MethodName: Run
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  finish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2362276043253194716}
+        m_TargetAssemblyTypeName: Effect, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1763737956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10787,6 +10819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2768f54a20c987319a9fea6eeb2b61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runAnimation: 
+  stopAnimation: 
   effectAnim: {fileID: 7400000, guid: 5e0d97ad214ea2483b986e5cbde55560, type: 2}
 --- !u!1001 &2362276043253194715
 PrefabInstance:
@@ -10845,6 +10879,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b11d43eba53815c02a67037efd72f9e7, type: 3}
+--- !u!114 &2362276043253194716 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4898755525013042246, guid: b11d43eba53815c02a67037efd72f9e7, type: 3}
+  m_PrefabInstance: {fileID: 2362276043253194715}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2768f54a20c987319a9fea6eeb2b61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8192576536342346650
 PrefabInstance:
   m_ObjectHideFlags: 0
