@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HordeLevel : MonoBehaviour
 {
-    [SerializeField] private int horders;
+    [SerializeField] private int maxOfHorder;
     [SerializeField] private int currentHorde;
     [SerializeField] private List<Horde> hordes = new();
     
@@ -17,7 +17,7 @@ public class HordeLevel : MonoBehaviour
         InstantiateEnemies();
         StartCoroutine(CameraShake.instance.Shake(0.2f, 0.1f));
         blockerHordeAnim.SetTrigger("Start");
-        horders = hordes.Count;
+        maxOfHorder = hordes.Count;
     }
 
     void InstantiateEnemies()
@@ -40,7 +40,7 @@ public class HordeLevel : MonoBehaviour
     {
         if (quantityOfEnemies <= 0)
         {
-            if (currentHorde >= horders)
+            if (currentHorde >= maxOfHorder)
             {
                 if(blockerHordeAnim != null) 
                 {

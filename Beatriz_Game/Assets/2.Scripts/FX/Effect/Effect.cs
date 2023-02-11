@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Effect : MonoBehaviour
 {
+    [SerializeField] private string runAnimation;
+    [SerializeField] private string stopAnimation;
     [SerializeField] private AnimationClip effectAnim;
     Animator anim;
-    private void Start() {
-        anim = GetComponent<Animator>();
-    }   
+
+    private void OnEnable() => anim = GetComponent<Animator>();
+
     public void Run()
     {
-        if(anim is null)
-            anim = GetComponent<Animator>();
-        anim.SetTrigger("Run");
+        anim.SetTrigger(Animator.StringToHash(runAnimation));
+    }
+
+    public void Stop() 
+    {
+        anim.SetTrigger(Animator.StringToHash(stopAnimation));
     }
 }
 

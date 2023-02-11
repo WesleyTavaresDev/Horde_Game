@@ -118,4 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2768f54a20c987319a9fea6eeb2b61f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runAnimation: Run
+  stopAnimation: Stop
   effectAnim: {fileID: 7400000, guid: 6b9b67e6a30d2fe5a8dcdd9d51cae615, type: 2}
