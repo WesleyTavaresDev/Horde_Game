@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HordeLevel : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class HordeLevel : MonoBehaviour
     [SerializeField] private uint quantityOfEnemies;
     [SerializeField] private Effect spawnEffect;
     [SerializeField] private Animator blockerHordeAnim;
+
+    [SerializeField] private UnityEvent InitEffects;
+    [SerializeField] private UnityEvent finish;
 
     public void Init()
     {
