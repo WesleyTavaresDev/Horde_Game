@@ -5,16 +5,14 @@ using UnityEngine.Events;
 
 public class HordeLevel : MonoBehaviour
 {
-    [SerializeField] private int maxOfHorder;
     [SerializeField] private int currentHorde;
     [SerializeField] private List<Horde> hordes = new();
     
     [SerializeField] private uint quantityOfEnemies;
-    [SerializeField] private Effect spawnEffect;
-    [SerializeField] private Animator blockerHordeAnim;
-
+    [SerializeField] private Effect spawnEffect;    
     [SerializeField] private UnityEvent InitEffects;
     [SerializeField] private UnityEvent finish;
+    private int maxOfHorder;
 
     public void Init()
     {
