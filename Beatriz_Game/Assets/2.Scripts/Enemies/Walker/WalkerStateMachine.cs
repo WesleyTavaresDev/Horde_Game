@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WalkerStateMachine : Spawnable
+public class WalkerStateMachine : MonoBehaviour
 {
     [HideInInspector] public WalkState walkState;
     [HideInInspector] public IdleState idleState;
@@ -38,9 +38,9 @@ public class WalkerStateMachine : Spawnable
     public Rigidbody2D rb;
     private StateMachine walkerSM;
     
-    protected override void Start()
+    void Start()
     {
-        base.Start();
+       
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
@@ -59,10 +59,6 @@ public class WalkerStateMachine : Spawnable
         deadState = new(this, walkerSM);
 
         walkerSM.Initialize(walkState);
-    }
-    public override void OnKill()
-    {
-        base.OnKill();
     }
 
     private void AddStantardPoints()
