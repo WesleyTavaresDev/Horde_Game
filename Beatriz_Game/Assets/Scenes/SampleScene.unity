@@ -6620,7 +6620,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1763737957}
   - component: {fileID: 1763737956}
-  - component: {fileID: 1763737955}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: LevelController
@@ -6628,60 +6627,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1763737955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763737954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89434765bcef6789fa125ba59065fd4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHorde: 0
-  hordes:
-  - enemies:
-    - enemy: {fileID: 5086423305679534616, guid: 34697d62f71ef4367a028ed6f88fadfb, type: 3}
-      quantity: 1
-      spawnerArea: {fileID: 989160081}
-  - enemies:
-    - enemy: {fileID: 5086423305679534616, guid: 34697d62f71ef4367a028ed6f88fadfb, type: 3}
-      quantity: 2
-      spawnerArea: {fileID: 989160081}
-  quantityOfEnemies: 0
-  spawnEffect: {fileID: 8192576537779956873, guid: 995f5ab55bca1a683bf9b026dd108249, type: 3}
-  InitEffects:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2362276043253194716}
-        m_TargetAssemblyTypeName: Effect, Assembly-CSharp
-        m_MethodName: Run
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  finish:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2362276043253194716}
-        m_TargetAssemblyTypeName: Effect, Assembly-CSharp
-        m_MethodName: Stop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1763737956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6694,8 +6639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f41eea9f7c5eb3dbbcf11a1d6f350d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelType: 1
-  hordeLevel: {fileID: 1763737955}
 --- !u!4 &1763737957
 Transform:
   m_ObjectHideFlags: 0
@@ -10915,17 +10858,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b11d43eba53815c02a67037efd72f9e7, type: 3}
---- !u!114 &2362276043253194716 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4898755525013042246, guid: b11d43eba53815c02a67037efd72f9e7, type: 3}
-  m_PrefabInstance: {fileID: 2362276043253194715}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2768f54a20c987319a9fea6eeb2b61f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8192576536342346650
 PrefabInstance:
   m_ObjectHideFlags: 0

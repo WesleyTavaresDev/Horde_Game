@@ -4,15 +4,15 @@ using UnityEngine;
 
 public abstract class Spawnable : MonoBehaviour
 {
-    [SerializeField] private HordeLevel hordeLevel;
+   // [SerializeField] private HordeLevel hordeLevel;
 
     protected virtual void Start() {
-        hordeLevel = GameObject.FindGameObjectWithTag("LevelController").GetComponent<HordeLevel>();
+    //    hordeLevel = GameObject.FindGameObjectWithTag("LevelController").GetComponent<HordeLevel>();
     }
 
     public virtual void OnKill()
     {
-        hordeLevel.DecreaseQuantityOfEnemies();
+      //  hordeLevel.DecreaseQuantityOfEnemies();
     }
 
 
