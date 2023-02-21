@@ -32,12 +32,15 @@ namespace Player
             anim = GetComponent<Animator>();
             jumpController = GetComponent<PlayerJumpController>();
             playerAttackController = GetComponent<PlayerAttackController>();
-
-            JumpInput().started += OnJumpPerformed;
         }
             
+        private void Update() 
+        {
+            if (JumpInput().triggered)
+                OnJumpPerformed(); 
+        }
 
-        private void OnJumpPerformed(InputAction.CallbackContext context)
+        private void OnJumpPerformed()
         {
             if(jumpController.OnGround && !playerAttackController.IsAttacking() && !playerHit.IsHitting() && !playerDead.IsPlayerDead()) 
                 Jump(jumpForce);
@@ -55,7 +58,7 @@ namespace Player
         private void OnEnable() => FallState.onFall += StopJumpAnimation;
         private void OnDisable() 
         { 
-            JumpInput().performed -= OnJumpPerformed;
+           // JumpInput().performed -= OnJumpPerformed;
             FallState.onFall -= StopJumpAnimation;
         }
     }
